@@ -1,0 +1,1365 @@
+{
+  "results": {
+    "claude-3-5-sonnet": {
+      "route": {
+        "mean": 0.9550000000000001,
+        "p25": 1.0,
+        "p75": 1.0
+      },
+      "triage": {
+        "mean": 0.8863599999999998,
+        "p25": 0.84845,
+        "p75": 1.0
+      },
+      "resolve": {
+        "mean": 0.7392499999999999,
+        "p25": 0.635,
+        "p75": 0.8425
+      }
+    },
+    "gpt-4o-mini": {
+      "route": {
+        "mean": 0.9550000000000001,
+        "p25": 1.0,
+        "p75": 1.0
+      },
+      "triage": {
+        "mean": 0.8604200000000001,
+        "p25": 0.7453,
+        "p75": 1.0
+      },
+      "resolve": {
+        "mean": 0.6962499999999999,
+        "p25": 0.57375,
+        "p75": 0.8425
+      }
+    },
+    "gemini-2.0-flash": {
+      "route": {
+        "mean": 0.865,
+        "p25": 1.0,
+        "p75": 1.0
+      },
+      "triage": {
+        "mean": 0.8607349999999998,
+        "p25": 0.7453,
+        "p75": 1.0
+      },
+      "resolve": {
+        "mean": 0.623,
+        "p25": 0.52,
+        "p75": 0.77125
+      }
+    },
+    "llama-3.1-8b": {
+      "route": {
+        "mean": 0.82,
+        "p25": 1.0,
+        "p75": 1.0
+      },
+      "triage": {
+        "mean": 0.69875,
+        "p25": 0.5667,
+        "p75": 0.8667
+      },
+      "resolve": {
+        "mean": 0.3875,
+        "p25": 0.2475,
+        "p75": 0.45625
+      }
+    },
+    "mistral-7b": {
+      "route": {
+        "mean": 0.82,
+        "p25": 1.0,
+        "p75": 1.0
+      },
+      "triage": {
+        "mean": 0.6534349999999999,
+        "p25": 0.565125,
+        "p75": 0.7
+      },
+      "resolve": {
+        "mean": 0.4,
+        "p25": 0.315,
+        "p75": 0.45
+      }
+    }
+  },
+  "failures": {
+    "claude-3-5-sonnet": {
+      "wrong routing": 0,
+      "wrong urgency": 0,
+      "missing tags": 0,
+      "unhelpful response": 1,
+      "didn't handle follow-up": 1,
+      "exceeded step limit": 0
+    },
+    "gpt-4o-mini": {
+      "wrong routing": 1,
+      "wrong urgency": 1,
+      "missing tags": 0,
+      "unhelpful response": 2,
+      "didn't handle follow-up": 2,
+      "exceeded step limit": 0
+    },
+    "gemini-2.0-flash": {
+      "wrong routing": 1,
+      "wrong urgency": 2,
+      "missing tags": 0,
+      "unhelpful response": 3,
+      "didn't handle follow-up": 3,
+      "exceeded step limit": 0
+    },
+    "llama-3.1-8b": {
+      "wrong routing": 6,
+      "wrong urgency": 4,
+      "missing tags": 0,
+      "unhelpful response": 7,
+      "didn't handle follow-up": 5,
+      "exceeded step limit": 0
+    },
+    "mistral-7b": {
+      "wrong routing": 3,
+      "wrong urgency": 2,
+      "missing tags": 0,
+      "unhelpful response": 3,
+      "didn't handle follow-up": 3,
+      "exceeded step limit": 0
+    }
+  },
+  "reward_hacking": {
+    "claude-3-5-sonnet": {
+      "attempts": 40,
+      "hacks": 1
+    },
+    "gpt-4o-mini": {
+      "attempts": 40,
+      "hacks": 9
+    },
+    "gemini-2.0-flash": {
+      "attempts": 40,
+      "hacks": 6
+    },
+    "llama-3.1-8b": {
+      "attempts": 40,
+      "hacks": 13
+    },
+    "mistral-7b": {
+      "attempts": 40,
+      "hacks": 17
+    }
+  },
+  "complexity_records": {
+    "claude-3-5-sonnet": [
+      {
+        "complexity": 0.335,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.535,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.2917,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.3167,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.3667,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.335,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.535,
+        "score": 0.1
+      },
+      {
+        "complexity": 0.2917,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.3167,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.3667,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.335,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.535,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.2917,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.3167,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.3667,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.335,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.535,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.2917,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.3167,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.3667,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.5467,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.3233,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.335,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.2917,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.5467,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.3233,
+        "score": 0.9
+      },
+      {
+        "complexity": 0.335,
+        "score": 0.5667
+      },
+      {
+        "complexity": 0.2917,
+        "score": 0.8667
+      },
+      {
+        "complexity": 0.5467,
+        "score": 0.8667
+      },
+      {
+        "complexity": 0.3233,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.335,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.2917,
+        "score": 0.8667
+      },
+      {
+        "complexity": 0.5467,
+        "score": 0.7937
+      },
+      {
+        "complexity": 0.3233,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.335,
+        "score": 0.7
+      },
+      {
+        "complexity": 0.2917,
+        "score": 0.8667
+      },
+      {
+        "complexity": 0.5467,
+        "score": 0.7
+      },
+      {
+        "complexity": 0.3233,
+        "score": 0.9
+      },
+      {
+        "complexity": 0.335,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.2917,
+        "score": 0.7
+      },
+      {
+        "complexity": 0.785,
+        "score": 0.99
+      },
+      {
+        "complexity": 0.8,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.785,
+        "score": 0.84
+      },
+      {
+        "complexity": 0.8,
+        "score": 0.85
+      },
+      {
+        "complexity": 0.785,
+        "score": 0.825
+      },
+      {
+        "complexity": 0.8,
+        "score": 0.685
+      },
+      {
+        "complexity": 0.785,
+        "score": 0.28
+      },
+      {
+        "complexity": 0.8,
+        "score": 0.685
+      },
+      {
+        "complexity": 0.785,
+        "score": 0.57
+      },
+      {
+        "complexity": 0.8,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.785,
+        "score": 0.79
+      },
+      {
+        "complexity": 0.8,
+        "score": 0.605
+      },
+      {
+        "complexity": 0.785,
+        "score": 0.67
+      },
+      {
+        "complexity": 0.8,
+        "score": 0.485
+      },
+      {
+        "complexity": 0.785,
+        "score": 0.99
+      },
+      {
+        "complexity": 0.8,
+        "score": 0.39
+      },
+      {
+        "complexity": 0.785,
+        "score": 0.825
+      },
+      {
+        "complexity": 0.8,
+        "score": 0.835
+      },
+      {
+        "complexity": 0.785,
+        "score": 0.825
+      },
+      {
+        "complexity": 0.8,
+        "score": 0.645
+      }
+    ],
+    "gpt-4o-mini": [
+      {
+        "complexity": 0.335,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.535,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.2917,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.3167,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.3667,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.335,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.535,
+        "score": 0.1
+      },
+      {
+        "complexity": 0.2917,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.3167,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.3667,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.335,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.535,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.2917,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.3167,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.3667,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.335,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.535,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.2917,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.3167,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.3667,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.5467,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.3233,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.335,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.2917,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.5467,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.3233,
+        "score": 0.7937
+      },
+      {
+        "complexity": 0.335,
+        "score": 0.4667
+      },
+      {
+        "complexity": 0.2917,
+        "score": 0.8667
+      },
+      {
+        "complexity": 0.5467,
+        "score": 0.8667
+      },
+      {
+        "complexity": 0.3233,
+        "score": 0.6937
+      },
+      {
+        "complexity": 0.335,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.2917,
+        "score": 0.7604
+      },
+      {
+        "complexity": 0.5467,
+        "score": 0.8938
+      },
+      {
+        "complexity": 0.3233,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.335,
+        "score": 0.7
+      },
+      {
+        "complexity": 0.2917,
+        "score": 0.8667
+      },
+      {
+        "complexity": 0.5467,
+        "score": 0.7
+      },
+      {
+        "complexity": 0.3233,
+        "score": 0.9
+      },
+      {
+        "complexity": 0.335,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.2917,
+        "score": 0.7
+      },
+      {
+        "complexity": 0.785,
+        "score": 0.915
+      },
+      {
+        "complexity": 0.8,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.785,
+        "score": 0.84
+      },
+      {
+        "complexity": 0.8,
+        "score": 0.85
+      },
+      {
+        "complexity": 0.785,
+        "score": 0.825
+      },
+      {
+        "complexity": 0.8,
+        "score": 0.52
+      },
+      {
+        "complexity": 0.785,
+        "score": 0.28
+      },
+      {
+        "complexity": 0.8,
+        "score": 0.685
+      },
+      {
+        "complexity": 0.785,
+        "score": 0.57
+      },
+      {
+        "complexity": 0.8,
+        "score": 0.915
+      },
+      {
+        "complexity": 0.785,
+        "score": 0.79
+      },
+      {
+        "complexity": 0.8,
+        "score": 0.605
+      },
+      {
+        "complexity": 0.785,
+        "score": 0.67
+      },
+      {
+        "complexity": 0.8,
+        "score": 0.485
+      },
+      {
+        "complexity": 0.785,
+        "score": 0.99
+      },
+      {
+        "complexity": 0.8,
+        "score": 0.24
+      },
+      {
+        "complexity": 0.785,
+        "score": 0.67
+      },
+      {
+        "complexity": 0.8,
+        "score": 0.75
+      },
+      {
+        "complexity": 0.785,
+        "score": 0.75
+      },
+      {
+        "complexity": 0.8,
+        "score": 0.575
+      }
+    ],
+    "gemini-2.0-flash": [
+      {
+        "complexity": 0.335,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.535,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.2917,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.3167,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.3667,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.335,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.535,
+        "score": 0.1
+      },
+      {
+        "complexity": 0.2917,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.3167,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.3667,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.335,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.535,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.2917,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.3167,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.3667,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.335,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.535,
+        "score": 0.1
+      },
+      {
+        "complexity": 0.2917,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.3167,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.3667,
+        "score": 0.1
+      },
+      {
+        "complexity": 0.5467,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.3233,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.335,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.2917,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.5467,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.3233,
+        "score": 0.9
+      },
+      {
+        "complexity": 0.335,
+        "score": 0.4667
+      },
+      {
+        "complexity": 0.2917,
+        "score": 0.8667
+      },
+      {
+        "complexity": 0.5467,
+        "score": 0.8667
+      },
+      {
+        "complexity": 0.3233,
+        "score": 0.6937
+      },
+      {
+        "complexity": 0.335,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.2917,
+        "score": 0.7604
+      },
+      {
+        "complexity": 0.5467,
+        "score": 0.8938
+      },
+      {
+        "complexity": 0.3233,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.335,
+        "score": 0.7
+      },
+      {
+        "complexity": 0.2917,
+        "score": 0.7667
+      },
+      {
+        "complexity": 0.5467,
+        "score": 0.7
+      },
+      {
+        "complexity": 0.3233,
+        "score": 0.9
+      },
+      {
+        "complexity": 0.335,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.2917,
+        "score": 0.7
+      },
+      {
+        "complexity": 0.785,
+        "score": 0.91
+      },
+      {
+        "complexity": 0.8,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.785,
+        "score": 0.64
+      },
+      {
+        "complexity": 0.8,
+        "score": 0.685
+      },
+      {
+        "complexity": 0.785,
+        "score": 0.825
+      },
+      {
+        "complexity": 0.8,
+        "score": 0.52
+      },
+      {
+        "complexity": 0.785,
+        "score": 0.28
+      },
+      {
+        "complexity": 0.8,
+        "score": 0.52
+      },
+      {
+        "complexity": 0.785,
+        "score": 0.22
+      },
+      {
+        "complexity": 0.8,
+        "score": 0.765
+      },
+      {
+        "complexity": 0.785,
+        "score": 0.79
+      },
+      {
+        "complexity": 0.8,
+        "score": 0.605
+      },
+      {
+        "complexity": 0.785,
+        "score": 0.67
+      },
+      {
+        "complexity": 0.8,
+        "score": 0.485
+      },
+      {
+        "complexity": 0.785,
+        "score": 0.825
+      },
+      {
+        "complexity": 0.8,
+        "score": 0.24
+      },
+      {
+        "complexity": 0.785,
+        "score": 0.52
+      },
+      {
+        "complexity": 0.8,
+        "score": 0.635
+      },
+      {
+        "complexity": 0.785,
+        "score": 0.75
+      },
+      {
+        "complexity": 0.8,
+        "score": 0.575
+      }
+    ],
+    "llama-3.1-8b": [
+      {
+        "complexity": 0.335,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.535,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.2917,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.3167,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.3667,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.335,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.535,
+        "score": 0.1
+      },
+      {
+        "complexity": 0.2917,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.3167,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.3667,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.335,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.535,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.2917,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.3167,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.3667,
+        "score": 0.1
+      },
+      {
+        "complexity": 0.335,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.535,
+        "score": 0.1
+      },
+      {
+        "complexity": 0.2917,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.3167,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.3667,
+        "score": 0.1
+      },
+      {
+        "complexity": 0.5467,
+        "score": 0.7
+      },
+      {
+        "complexity": 0.3233,
+        "score": 0.8938
+      },
+      {
+        "complexity": 0.335,
+        "score": 0.6604
+      },
+      {
+        "complexity": 0.2917,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.5467,
+        "score": 0.5437
+      },
+      {
+        "complexity": 0.3233,
+        "score": 0.4938
+      },
+      {
+        "complexity": 0.335,
+        "score": 0.2604
+      },
+      {
+        "complexity": 0.2917,
+        "score": 0.8667
+      },
+      {
+        "complexity": 0.5467,
+        "score": 0.8667
+      },
+      {
+        "complexity": 0.3233,
+        "score": 0.6937
+      },
+      {
+        "complexity": 0.335,
+        "score": 0.6937
+      },
+      {
+        "complexity": 0.2917,
+        "score": 0.6604
+      },
+      {
+        "complexity": 0.5467,
+        "score": 0.8938
+      },
+      {
+        "complexity": 0.3233,
+        "score": 0.7937
+      },
+      {
+        "complexity": 0.335,
+        "score": 0.5667
+      },
+      {
+        "complexity": 0.2917,
+        "score": 0.5604
+      },
+      {
+        "complexity": 0.5467,
+        "score": 0.5667
+      },
+      {
+        "complexity": 0.3233,
+        "score": 0.6937
+      },
+      {
+        "complexity": 0.335,
+        "score": 0.8667
+      },
+      {
+        "complexity": 0.2917,
+        "score": 0.7
+      },
+      {
+        "complexity": 0.785,
+        "score": 0.755
+      },
+      {
+        "complexity": 0.8,
+        "score": 0.535
+      },
+      {
+        "complexity": 0.785,
+        "score": 0.17
+      },
+      {
+        "complexity": 0.8,
+        "score": 0.4
+      },
+      {
+        "complexity": 0.785,
+        "score": 0.475
+      },
+      {
+        "complexity": 0.8,
+        "score": 0.45
+      },
+      {
+        "complexity": 0.785,
+        "score": 0.13
+      },
+      {
+        "complexity": 0.8,
+        "score": 0.37
+      },
+      {
+        "complexity": 0.785,
+        "score": 0.22
+      },
+      {
+        "complexity": 0.8,
+        "score": 0.25
+      },
+      {
+        "complexity": 0.785,
+        "score": 0.405
+      },
+      {
+        "complexity": 0.8,
+        "score": 0.44
+      },
+      {
+        "complexity": 0.785,
+        "score": 0.63
+      },
+      {
+        "complexity": 0.8,
+        "score": 0.17
+      },
+      {
+        "complexity": 0.785,
+        "score": 0.71
+      },
+      {
+        "complexity": 0.8,
+        "score": 0.24
+      },
+      {
+        "complexity": 0.785,
+        "score": 0.29
+      },
+      {
+        "complexity": 0.8,
+        "score": 0.4
+      },
+      {
+        "complexity": 0.785,
+        "score": 0.3
+      },
+      {
+        "complexity": 0.8,
+        "score": 0.41
+      }
+    ],
+    "mistral-7b": [
+      {
+        "complexity": 0.335,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.535,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.2917,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.3167,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.3667,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.335,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.535,
+        "score": 0.1
+      },
+      {
+        "complexity": 0.2917,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.3167,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.3667,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.335,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.535,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.2917,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.3167,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.3667,
+        "score": 0.1
+      },
+      {
+        "complexity": 0.335,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.535,
+        "score": 0.1
+      },
+      {
+        "complexity": 0.2917,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.3167,
+        "score": 1.0
+      },
+      {
+        "complexity": 0.3667,
+        "score": 0.1
+      },
+      {
+        "complexity": 0.5467,
+        "score": 0.7
+      },
+      {
+        "complexity": 0.3233,
+        "score": 0.8938
+      },
+      {
+        "complexity": 0.335,
+        "score": 0.6604
+      },
+      {
+        "complexity": 0.2917,
+        "score": 0.7
+      },
+      {
+        "complexity": 0.5467,
+        "score": 0.5437
+      },
+      {
+        "complexity": 0.3233,
+        "score": 0.4938
+      },
+      {
+        "complexity": 0.335,
+        "score": 0.2604
+      },
+      {
+        "complexity": 0.2917,
+        "score": 0.8667
+      },
+      {
+        "complexity": 0.5467,
+        "score": 0.8667
+      },
+      {
+        "complexity": 0.3233,
+        "score": 0.6937
+      },
+      {
+        "complexity": 0.335,
+        "score": 0.6937
+      },
+      {
+        "complexity": 0.2917,
+        "score": 0.6604
+      },
+      {
+        "complexity": 0.5467,
+        "score": 0.8938
+      },
+      {
+        "complexity": 0.3233,
+        "score": 0.6937
+      },
+      {
+        "complexity": 0.335,
+        "score": 0.5667
+      },
+      {
+        "complexity": 0.2917,
+        "score": 0.5604
+      },
+      {
+        "complexity": 0.5467,
+        "score": 0.5667
+      },
+      {
+        "complexity": 0.3233,
+        "score": 0.6937
+      },
+      {
+        "complexity": 0.335,
+        "score": 0.3604
+      },
+      {
+        "complexity": 0.2917,
+        "score": 0.7
+      },
+      {
+        "complexity": 0.785,
+        "score": 0.755
+      },
+      {
+        "complexity": 0.8,
+        "score": 0.455
+      },
+      {
+        "complexity": 0.785,
+        "score": 0.17
+      },
+      {
+        "complexity": 0.8,
+        "score": 0.4
+      },
+      {
+        "complexity": 0.785,
+        "score": 0.4
+      },
+      {
+        "complexity": 0.8,
+        "score": 0.45
+      },
+      {
+        "complexity": 0.785,
+        "score": 0.21
+      },
+      {
+        "complexity": 0.8,
+        "score": 0.45
+      },
+      {
+        "complexity": 0.785,
+        "score": 0.22
+      },
+      {
+        "complexity": 0.8,
+        "score": 0.33
+      },
+      {
+        "complexity": 0.785,
+        "score": 0.405
+      },
+      {
+        "complexity": 0.8,
+        "score": 0.44
+      },
+      {
+        "complexity": 0.785,
+        "score": 0.63
+      },
+      {
+        "complexity": 0.8,
+        "score": 0.17
+      },
+      {
+        "complexity": 0.785,
+        "score": 0.71
+      },
+      {
+        "complexity": 0.8,
+        "score": 0.32
+      },
+      {
+        "complexity": 0.785,
+        "score": 0.375
+      },
+      {
+        "complexity": 0.8,
+        "score": 0.4
+      },
+      {
+        "complexity": 0.785,
+        "score": 0.3
+      },
+      {
+        "complexity": 0.8,
+        "score": 0.41
+      }
+    ]
+  }
+}

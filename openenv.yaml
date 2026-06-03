@@ -1,0 +1,115 @@
+name: support-ticket-triage
+version: "1.0.0"
+description: >
+  A real-world OpenEnv environment where AI agents must triage, route, and resolve
+  customer support tickets. Agents observe ticket content and conversation history,
+  then take actions such as routing to departments, setting urgency, responding
+  to customers, escalating issues, and closing tickets.
+
+author: "OpenEnv Hackathon Submission"
+tags:
+  - openenv
+  - customer-support
+  - triage
+  - nlp
+  - real-world
+
+# ── Task definitions ────────────────────────────────────────────────────────
+tasks:
+  - name: route
+    display_name: "Ticket Routing (Easy)"
+    difficulty: easy
+    max_steps: 3
+    success_threshold: 1.0
+    description: >
+      Route the incoming support ticket to the correct department.
+      Score 1.0 for correct routing, 0.0 for wrong department.
+    ticket_pool: [TKT-001, TKT-002, TKT-003, TKT-004, TKT-005]
+
+  - name: triage
+    display_name: "Full Triage (Medium)"
+    difficulty: medium
+    max_steps: 8
+    success_threshold: 0.7
+    description: >
+      Fully triage the ticket: route correctly (0.30), set urgency (0.25),
+      add relevant tags (0.20), and send an informative initial response (0.25).
+    ticket_pool: [TKT-006, TKT-007, TKT-001, TKT-003]
+
+  - name: resolve
+    display_name: "Full Resolution (Hard)"
+    difficulty: hard
+    max_steps: 12
+    success_threshold: 0.6
+    description: >
+      Fully resolve a complex ticket over multiple turns: route (0.15),
+      set urgency (0.10), respond initially (0.20), escalate if needed (0.20),
+      handle customer follow-up (0.20), and close with resolution note (0.15).
+    ticket_pool: [TKT-008, TKT-009]
+
+# ── Observation space ────────────────────────────────────────────────────────
+observation_space:
+  type: object
+  fields:
+    ticket_id: {type: string}
+    subject: {type: string}
+    body: {type: string}
+    sender_email: {type: string}
+    sender_name: {type: string}
+    conversation_history:
+      type: array
+      items:
+        sender: string
+        content: string
+        timestamp: string
+    current_department: {type: string, nullable: true, enum: [billing, technical_support, sales, customer_success, legal]}
+    current_urgency: {type: string, nullable: true, enum: [low, medium, high, critical]}
+    tags: {type: array, items: string}
+    is_escalated: {type: boolean}
+    is_closed: {type: boolean}
+    step_number: {type: integer}
+    task_name: {type: string}
+    task_description: {type: string}
+    available_actions: {type: array, items: string}
+
+# ── Action space ─────────────────────────────────────────────────────────────
+action_space:
+  type: object
+  fields:
+    action_type:
+      type: string
+      enum: [route, respond, set_urgency, tag, escalate, close, noop]
+    department:
+      type: string
+      nullable: true
+      enum: [billing, technical_support, sales, customer_success, legal]
+    response_text: {type: string, nullable: true}
+    urgency: {type: string, nullable: true, enum: [low, medium, high, critical]}
+    tags: {type: array, items: string, nullable: true}
+    escalation_reason: {type: string, nullable: true}
+    resolution_note: {type: string, nullable: true}
+
+# ── Reward function ──────────────────────────────────────────────────────────
+reward:
+  range: [0.0, 1.0]
+  type: shaped
+  description: >
+    Step-level shaped rewards guide the agent during the episode.
+    Terminal reward from the grader provides the authoritative episode score.
+  mid_episode: >
+    Partial credit per action: +0.3 correct routing, +0.2 correct urgency,
+    +0.1×overlap tag matching, +0.15×quality response, +0.2 justified escalation,
+    -0.1 unjustified escalation, +0.1 closure with note.
+  terminal: >
+    Task-specific weighted grader aggregates all sub-task scores into a
+    final [0.0, 1.0] score.
+
+# ── API endpoints ─────────────────────────────────────────────────────────────
+api:
+  base_url: "http://localhost:7860"
+  endpoints:
+    reset: {method: POST, path: /reset}
+    step: {method: POST, path: /step}
+    state: {method: GET, path: /state}
+    tasks: {method: GET, path: /tasks}
+    health: {method: GET, path: /}

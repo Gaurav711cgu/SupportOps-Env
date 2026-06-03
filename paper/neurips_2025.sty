@@ -1,0 +1,114 @@
+% NeurIPS 2025 Style File (simplified for short paper)
+% Based on the official NeurIPS template structure
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{neurips_2025}[2025/01/01 NeurIPS 2025 Style]
+
+\usepackage{ifthen}
+\usepackage{microtype}
+\usepackage{helvet}
+\usepackage{courier}
+\usepackage{graphicx}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{natbib}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+
+% Page geometry
+\usepackage[
+  paperwidth=8.5in,
+  paperheight=11in,
+  top=1in,
+  bottom=1in,
+  left=1.25in,
+  right=1.25in
+]{geometry}
+
+% Font settings
+\renewcommand{\rmdefault}{ptm}
+\renewcommand{\sfdefault}{phv}
+\renewcommand{\ttdefault}{pcr}
+
+% Title formatting
+\newcommand{\@toptitlebar}{
+  \hrule height 4pt
+  \vskip .25in
+  \vskip -\parskip
+}
+
+\newcommand{\@bottomtitlebar}{
+  \vskip .29in
+  \vskip -\parskip
+  \hrule height 1pt
+  \vskip .09in
+}
+
+% Section style
+\usepackage{titlesec}
+\titleformat{\section}{\large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\normalsize\itshape}{\thesubsubsection}{1em}{}
+
+% Abstract environment
+\renewenvironment{abstract}{
+  \vskip .075in \centerline{\large\bf Abstract}
+  \vspace{0.5ex}
+  \begin{quote}
+}{
+  \end{quote}
+  \vskip 1ex
+}
+
+% Colors for code listings
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.97,0.97,0.97}
+
+\lstdefinestyle{mystyle}{
+  backgroundcolor=\color{backcolour},
+  commentstyle=\color{codegray},
+  keywordstyle=\color{blue},
+  numberstyle=\tiny\color{codegray},
+  stringstyle=\color{codepurple},
+  basicstyle=\ttfamily\footnotesize,
+  breakatwhitespace=false,
+  breaklines=true,
+  captionpos=b,
+  keepspaces=true,
+  numbers=left,
+  numbersep=5pt,
+  showspaces=false,
+  showstringspaces=false,
+  showtabs=false,
+  tabsize=2
+}
+\lstset{style=mystyle}
+
+% Hyperlink colors
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  filecolor=blue,
+  urlcolor=blue,
+  citecolor=blue
+}
+
+% Line spacing
+\usepackage{setspace}
+\setstretch{1.0}
+
+% Table settings
+\setlength{\tabcolsep}{6pt}
+\renewcommand{\arraystretch}{1.2}
+
+\endinput
