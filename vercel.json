@@ -1,7 +1,18 @@
 {
-  "cleanUrls": true,
-  "rewrites": [
-    { "source": "/ui", "destination": "/index.html" },
-    { "source": "/", "destination": "/index.html" }
+  "builds": [
+    {
+      "src": "index.html",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/ui",
+      "dest": "/index.html"
+    },
+    {
+      "src": "/",
+      "dest": "/index.html"
+    }
   ]
 }
