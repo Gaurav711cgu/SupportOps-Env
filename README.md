@@ -1,3 +1,13 @@
+---
+title: SupportOps Env
+emoji: 🎫
+colorFrom: blue
+colorTo: indigo
+sdk: docker
+app_port: 7860
+pinned: false
+---
+
 # 🎫 Support Ticket Triage — OpenEnv
 
 A real-world [OpenEnv](https://huggingface.co/openenv) environment where AI agents must
