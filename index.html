@@ -773,6 +773,203 @@
             50% { transform: translateY(-30%); }
             100% { transform: translateY(0); }
         }
+
+        /* ── API CONNECTION CARD STYLES ────────────────────────────────────── */
+        .connection-panel {
+            margin-bottom: 20px;
+        }
+
+        .connection-badge {
+            font-size: 10px;
+            font-family: 'JetBrains Mono', monospace;
+            padding: 2px 6px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .connection-badge.status-default {
+            color: var(--success);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            background: rgba(34, 197, 94, 0.05);
+            box-shadow: 0 0 6px rgba(34, 197, 94, 0.1);
+        }
+
+        .connection-badge.status-custom {
+            color: var(--primary);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            background: rgba(0, 212, 255, 0.05);
+            box-shadow: 0 0 6px rgba(0, 212, 255, 0.1);
+        }
+
+        .connection-badge.status-error {
+            color: var(--error);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            background: rgba(239, 68, 68, 0.05);
+            box-shadow: 0 0 6px rgba(239, 68, 68, 0.1);
+        }
+
+        .connection-badge.status-offline {
+            color: var(--text-muted);
+            border: 1px solid var(--border-color);
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .connection-status-card {
+            background: rgba(18, 24, 39, 0.5);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            position: relative;
+        }
+
+        .status-indicator {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            font-size: 13px;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            display: inline-block;
+            background-color: var(--text-muted);
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        .status-dot.pulsing {
+            animation: pulseStatus 2s infinite alternate;
+        }
+
+        .status-dot.status-default-dot {
+            background-color: var(--success);
+            box-shadow: 0 0 8px var(--success);
+        }
+
+        .status-dot.status-custom-dot {
+            background-color: var(--primary);
+            box-shadow: 0 0 8px var(--primary);
+        }
+
+        .status-dot.status-error-dot {
+            background-color: var(--error);
+            box-shadow: 0 0 8px var(--error);
+        }
+
+        .status-dot.pinging {
+            background-color: var(--warning);
+            box-shadow: 0 0 8px var(--warning);
+        }
+
+        @keyframes pulseStatus {
+            0% { opacity: 0.4; }
+            100% { opacity: 1; }
+        }
+
+        .status-details {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: var(--text-muted);
+            word-break: break-all;
+        }
+
+        .url-type-badge {
+            font-size: 9px;
+            text-transform: uppercase;
+            font-family: 'JetBrains Mono', monospace;
+            padding: 1px 5px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+
+        .url-type-badge.badge-default {
+            color: var(--success);
+            background: rgba(34, 197, 94, 0.1);
+        }
+
+        .url-type-badge.badge-custom {
+            color: var(--primary);
+            background: rgba(0, 212, 255, 0.1);
+        }
+
+        .btn-check-conn {
+            background: rgba(30, 42, 64, 0.5);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 0 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .btn-check-conn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            box-shadow: 0 0 8px rgba(0, 212, 255, 0.15);
+            background: rgba(0, 212, 255, 0.05);
+        }
+
+        .btn-check-conn:active {
+            transform: scale(0.95);
+        }
+
+        /* ── TOAST NOTIFICATIONS ───────────────────────────────────────────── */
+        .toast-container {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 10000;
+            pointer-events: none;
+        }
+
+        .toast {
+            background: rgba(18, 24, 39, 0.95);
+            border: 1px solid var(--border-color);
+            padding: 12px 20px;
+            border-radius: 8px;
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+            transform: translateX(120%);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s;
+            pointer-events: auto;
+            opacity: 0;
+            backdrop-filter: blur(8px);
+        }
+
+        .toast.show {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        .toast-success {
+            border-left: 3px solid var(--success);
+        }
+
+        .toast-error {
+            border-left: 3px solid var(--error);
+        }
+
+        .toast-info {
+            border-left: 3px solid var(--primary);
+        }
     </style>
 </head>
 <body>
@@ -812,45 +1009,72 @@
         <!-- ── TAB: SANDBOX (OVERHAULED REPLAY PLAYER) ─────────────────────── -->
         <div id="sandbox" class="tab-content active">
             <div class="sandbox-layout">
-                <div class="panel">
-                    <div class="panel-title">Playback Controller</div>
-                    
-                    <div class="form-group">
-                        <label for="apiUrl">API Backend URL</label>
-                        <input type="text" id="apiUrl" class="form-input" placeholder="e.g., https://your-space.hf.space">
-                        <span style="font-size: 10px; color: var(--text-muted); margin-top: 4px; display: block;">Leave blank if serving on the same origin.</span>
+                <div class="sidebar-container" style="display: flex; flex-direction: column; gap: 20px;">
+                    <!-- Card 1: API Environment -->
+                    <div class="panel connection-panel">
+                        <div class="panel-title">
+                            <span>API Environment</span>
+                            <span id="connectionBadge" class="connection-badge status-offline">Offline</span>
+                        </div>
+                        
+                        <div class="connection-status-card">
+                            <div class="status-indicator">
+                                <span class="status-dot pulsing"></span>
+                                <span id="statusText">Verifying status...</span>
+                            </div>
+                            <div id="statusDetails" class="status-details">Target: https://gaurav711-supportops-env.hf.space</div>
+                        </div>
+
+                        <div class="form-group" style="margin-top: 16px; margin-bottom: 0;">
+                            <label for="apiUrl" style="display: flex; justify-content: space-between; align-items: center;">
+                                <span>API Endpoint Override</span>
+                                <span id="urlTypeBadge" class="url-type-badge badge-default">Default Space</span>
+                            </label>
+                            <div class="input-with-button" style="display: flex; gap: 8px; margin-top: 6px;">
+                                <input type="text" id="apiUrl" class="form-input" style="font-family: monospace; font-size: 12px;" placeholder="e.g., https://your-space.hf.space">
+                                <button onclick="checkConnectionHealth(true)" class="btn-check-conn" title="Test Connection">⚡</button>
+                            </div>
+                            <span style="font-size: 10px; color: var(--text-muted); margin-top: 6px; display: block; line-height: 1.4;">
+                                Override to connect to your local backend (e.g. <code>http://localhost:7860</code>) or custom host.
+                            </span>
+                        </div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="taskName">Select Benchmark Task</label>
-                        <select id="taskName" class="form-select" onchange="updateTicketPool()">
-                            <option value="route">Route (Easy)</option>
-                            <option value="triage">Triage (Medium)</option>
-                            <option value="resolve" selected>Resolve (Hard)</option>
-                        </select>
-                    </div>
+                    <!-- Card 2: Playback Settings -->
+                    <div class="panel">
+                        <div class="panel-title">Playback Controller</div>
+                        
+                        <div class="form-group">
+                            <label for="taskName">Select Benchmark Task</label>
+                            <select id="taskName" class="form-select" onchange="updateTicketPool()">
+                                <option value="route">Route (Easy)</option>
+                                <option value="triage">Triage (Medium)</option>
+                                <option value="resolve" selected>Resolve (Hard)</option>
+                            </select>
+                        </div>
 
-                    <div class="form-group">
-                        <label for="ticketId">Ticket ID</label>
-                        <select id="ticketId" class="form-select">
-                            <!-- Populated dynamically -->
-                        </select>
-                    </div>
+                        <div class="form-group">
+                            <label for="ticketId">Ticket ID</label>
+                            <select id="ticketId" class="form-select">
+                                <!-- Populated dynamically -->
+                            </select>
+                        </div>
 
-                    <div class="form-group">
-                        <label for="modelSim">Agent Model Preset</label>
-                        <select id="modelSim" class="form-select">
-                            <option value="claude-3-5-sonnet">Claude 3.5 Sonnet (Aligned)</option>
-                            <option value="mistral-7b">Mistral-7B (Unaligned / Hacked)</option>
-                        </select>
-                    </div>
+                        <div class="form-group">
+                            <label style="display: block; font-size: 11px; font-weight: 600; color: var(--text-muted); margin-bottom: 6px; text-transform: uppercase;">Agent Model Preset</label>
+                            <select id="modelSim" class="form-select">
+                                <option value="claude-3-5-sonnet">Claude 3.5 Sonnet (Aligned)</option>
+                                <option value="mistral-7b">Mistral-7B (Unaligned / Hacked)</option>
+                            </select>
+                        </div>
 
-                    <button class="btn-primary" onclick="initEpisode()">Initialize Episode</button>
-                    <button id="stepBtn" class="btn-secondary" onclick="executeStep()" style="margin-top: 10px;" disabled>Execute Step</button>
+                        <button class="btn-primary" onclick="initEpisode()">Initialize Episode</button>
+                        <button id="stepBtn" class="btn-secondary" onclick="executeStep()" style="margin-top: 10px;" disabled>Execute Step</button>
 
-                    <div style="margin-top: 24px; border-top: 1px solid var(--border-color); padding-top: 16px;">
-                        <label style="display: block; font-size: 11px; font-weight: 600; color: var(--text-muted); margin-bottom: 8px; text-transform: uppercase;">Side-by-Side Trajectory Playback</label>
-                        <button class="btn-secondary" onclick="playSideBySide()" style="padding: 10px; font-size: 13px;">Compare Aligned vs. Hacked Runs</button>
+                        <div style="margin-top: 24px; border-top: 1px solid var(--border-color); padding-top: 16px;">
+                            <label style="display: block; font-size: 11px; font-weight: 600; color: var(--text-muted); margin-bottom: 8px; text-transform: uppercase;">Side-by-Side Trajectory Playback</label>
+                            <button class="btn-secondary" onclick="playSideBySide()" style="padding: 10px; font-size: 13px;">Compare Aligned vs. Hacked Runs</button>
+                        </div>
                     </div>
                 </div>
 
@@ -1762,6 +1986,108 @@
         // Load ticket pool
         updateTicketPool();
 
+        // Notification system
+        function showNotification(message, type = 'info') {
+            let container = document.getElementById('toastContainer');
+            if (!container) {
+                container = document.createElement('div');
+                container.id = 'toastContainer';
+                container.className = 'toast-container';
+                document.body.appendChild(container);
+            }
+            
+            const toast = document.createElement('div');
+            toast.className = `toast toast-${type}`;
+            
+            let icon = 'ℹ️';
+            if (type === 'success') icon = '✅';
+            if (type === 'error') icon = '❌';
+            
+            toast.innerHTML = `<span style="font-size: 16px;">${icon}</span> <span>${message}</span>`;
+            container.appendChild(toast);
+            
+            setTimeout(() => toast.classList.add('show'), 10);
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => toast.remove(), 300);
+            }, 4000);
+        }
+
+        // Connection Check
+        let connCheckTimeout = null;
+        async function checkConnectionHealth(forceAlert = false) {
+            const url = getApiUrl();
+            const statusText = document.getElementById('statusText');
+            const statusDetails = document.getElementById('statusDetails');
+            const connectionBadge = document.getElementById('connectionBadge');
+            const urlTypeBadge = document.getElementById('urlTypeBadge');
+            const dot = document.querySelector('.connection-status-card .status-dot');
+
+            if (!statusText || !statusDetails || !connectionBadge || !urlTypeBadge || !dot) return;
+
+            statusText.textContent = "Connecting...";
+            statusDetails.textContent = url ? `Pinging ${url}...` : "No endpoint specified";
+            dot.className = "status-dot pulsing pinging";
+            
+            const isDefault = (url === "https://gaurav711-supportops-env.hf.space" || !url);
+            urlTypeBadge.textContent = isDefault ? "Default Space" : "Custom Host";
+            urlTypeBadge.className = `url-type-badge ${isDefault ? 'badge-default' : 'badge-custom'}`;
+
+            if (!url) {
+                statusText.textContent = "Empty Endpoint Override";
+                statusDetails.textContent = "Using local window.location origin";
+                connectionBadge.textContent = "Offline";
+                connectionBadge.className = "connection-badge status-offline";
+                dot.className = "status-dot";
+                return;
+            }
+
+            try {
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 6000);
+                
+                const response = await fetch(`${url}/`, { 
+                    method: 'GET',
+                    signal: controller.signal,
+                    headers: { 'Accept': 'application/json' }
+                });
+                
+                clearTimeout(timeoutId);
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    statusText.textContent = "Connected / Live";
+                    statusDetails.textContent = `OpenEnv v${data.version || '1.0'} (Active)`;
+                    
+                    if (isDefault) {
+                        connectionBadge.textContent = "Default Live";
+                        connectionBadge.className = "connection-badge status-default";
+                        dot.className = "status-dot pulsing status-default-dot";
+                    } else {
+                        connectionBadge.textContent = "Override Active";
+                        connectionBadge.className = "connection-badge status-custom";
+                        dot.className = "status-dot pulsing status-custom-dot";
+                    }
+                    if (forceAlert) {
+                        showNotification("API Connection Successful!", "success");
+                    }
+                } else {
+                    throw new Error(`HTTP Status ${response.status}`);
+                }
+            } catch (err) {
+                console.error("Connection failed:", err);
+                statusText.textContent = "Offline / Connection Failed";
+                statusDetails.textContent = `Host unreachable or CORS disabled`;
+                connectionBadge.textContent = "Error";
+                connectionBadge.className = "connection-badge status-error";
+                dot.className = "status-dot status-error-dot";
+                if (forceAlert) {
+                    showNotification("API connection failed. Ensure your server is running and CORS is enabled.", "error");
+                }
+            }
+        }
+
         // Load saved API URL on startup
         document.addEventListener('DOMContentLoaded', () => {
             const savedUrl = localStorage.getItem('supportops_api_url');
@@ -1771,6 +2097,9 @@
                 document.getElementById('apiUrl').value = "https://gaurav711-supportops-env.hf.space";
             }
             calculateSavings();
+            
+            // Run initial healthcheck
+            checkConnectionHealth(false);
             
             // Check for permalinks on load
             const urlParams = new URLSearchParams(window.location.search);
@@ -1782,7 +2111,6 @@
                 updateTicketPool();
                 document.getElementById('modelSim').value = modelParam;
                 
-                // If it is resolve task, compare side-by-side automatically
                 if (taskParam === 'resolve') {
                     switchTab('sandbox');
                     setTimeout(playSideBySide, 500);
@@ -1790,10 +2118,33 @@
             }
         });
 
-        // Save API URL on input
+        // Save API URL on input and check status
         document.addEventListener('input', (e) => {
             if (e.target && e.target.id === 'apiUrl') {
-                localStorage.setItem('supportops_api_url', e.target.value.trim());
+                const newUrl = e.target.value.trim();
+                localStorage.setItem('supportops_api_url', newUrl);
+                
+                // Live update the label badge
+                const isDefault = (newUrl === "https://gaurav711-supportops-env.hf.space" || !newUrl);
+                const urlTypeBadge = document.getElementById('urlTypeBadge');
+                if (urlTypeBadge) {
+                    urlTypeBadge.textContent = isDefault ? "Default Space" : "Custom Host";
+                    urlTypeBadge.className = `url-type-badge ${isDefault ? 'badge-default' : 'badge-custom'}`;
+                }
+                
+                // Debounce health check on typing (1.5s delay)
+                if (connCheckTimeout) clearTimeout(connCheckTimeout);
+                connCheckTimeout = setTimeout(() => {
+                    checkConnectionHealth(false);
+                }, 1500);
+            }
+        });
+
+        // Also check connection when user presses Enter on the input
+        document.addEventListener('keydown', (e) => {
+            if (e.target && e.target.id === 'apiUrl' && e.key === 'Enter') {
+                if (connCheckTimeout) clearTimeout(connCheckTimeout);
+                checkConnectionHealth(true);
             }
         });
 
