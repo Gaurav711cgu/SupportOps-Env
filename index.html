@@ -6,20 +6,20 @@
     <title>SupportOps v2 — Stateful Agent Evaluation Dashboard</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@400;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #0a0e1a;
-            --card-bg: #121827;
-            --border-color: #1e2a40;
-            --text-main: #E2E8F0;
-            --text-muted: #8892B0;
-            --primary: #00d4ff; /* electric teal */
-            --primary-glow: rgba(0, 212, 255, 0.15);
-            --secondary: #0066FF;
-            --success: #22c55e;
-            --error: #ef4444;
-            --warning: #f59e0b;
+            --bg-color: #05070f;
+            --card-bg: #0c0f1d;
+            --border-color: #171d33;
+            --text-main: #f1f5f9;
+            --text-muted: #7382a0;
+            --primary: #6366f1; /* Electric Indigo */
+            --primary-glow: rgba(99, 102, 241, 0.15);
+            --secondary: #00f5a0; /* Neon Mint */
+            --success: #00f5a0;
+            --error: #ff4a6b; /* Neon Crimson */
+            --warning: #ffd000;
         }
 
         * {
@@ -37,8 +37,8 @@
             position: relative;
             overflow-x: hidden;
             background-image: 
-                linear-gradient(rgba(0, 212, 255, 0.02) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 212, 255, 0.02) 1px, transparent 1px);
+                linear-gradient(rgba(99, 102, 241, 0.015) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(99, 102, 241, 0.015) 1px, transparent 1px);
             background-size: 40px 40px;
             background-position: center;
         }
@@ -57,10 +57,10 @@
         }
 
         .logo-section h1 {
-            font-family: 'IBM Plex Sans Condensed', sans-serif;
-            font-size: 22px;
-            font-weight: 700;
-            letter-spacing: 0.5px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
             color: var(--text-main);
             display: flex;
             align-items: center;
@@ -68,13 +68,15 @@
         }
 
         .logo-section h1 span {
-            color: var(--primary);
-            font-size: 13px;
-            border: 1px solid var(--primary);
+            color: var(--secondary);
+            font-size: 12px;
+            border: 1px solid var(--secondary);
             padding: 2px 8px;
             border-radius: 4px;
             font-family: 'JetBrains Mono', monospace;
-            box-shadow: 0 0 8px var(--primary-glow);
+            box-shadow: 0 0 8px rgba(0, 245, 160, 0.2);
+            text-transform: uppercase;
+            font-weight: bold;
         }
 
         .logo-section p {
@@ -106,7 +108,7 @@
         }
 
         .nav-btn.active {
-            color: var(--primary);
+            color: var(--secondary);
             font-weight: 600;
         }
 
@@ -117,8 +119,8 @@
             left: 0;
             right: 0;
             height: 2px;
-            background-color: var(--primary);
-            box-shadow: 0 0 10px var(--primary);
+            background-color: var(--secondary);
+            box-shadow: 0 0 10px var(--secondary);
         }
 
         main {
@@ -140,9 +142,16 @@
             border: 1px solid var(--border-color);
             border-radius: 12px;
             padding: 24px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
             position: relative;
             overflow: hidden;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .panel:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.4);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.06);
         }
 
         .panel::before {
@@ -151,19 +160,19 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--primary), transparent);
-            opacity: 0.3;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary), var(--secondary), transparent);
+            opacity: 0.4;
         }
 
         .panel-title {
-            font-family: 'IBM Plex Sans Condensed', sans-serif;
+            font-family: 'Space Grotesk', sans-serif;
             font-size: 15px;
             font-weight: 700;
             margin-bottom: 20px;
             border-bottom: 1px solid var(--border-color);
             padding-bottom: 12px;
-            color: var(--primary);
+            color: var(--text-main);
             text-transform: uppercase;
             letter-spacing: 1px;
             display: flex;
@@ -354,7 +363,7 @@
         }
 
         .column-header {
-            font-family: 'IBM Plex Sans Condensed', sans-serif;
+            font-family: 'Space Grotesk', sans-serif;
             font-weight: 700;
             font-size: 12px;
             text-transform: uppercase;
@@ -449,7 +458,7 @@
         }
 
         .table-title {
-            font-family: 'IBM Plex Sans Condensed', sans-serif;
+            font-family: 'Space Grotesk', sans-serif;
             font-size: 16px;
             font-weight: 700;
             margin-bottom: 16px;
@@ -663,7 +672,7 @@
         }
 
         .blog-post h2 {
-            font-family: 'IBM Plex Sans Condensed', sans-serif;
+            font-family: 'Space Grotesk', sans-serif;
             font-size: 22px;
             font-weight: 700;
             margin-bottom: 8px;
@@ -694,7 +703,7 @@
         }
 
         .blog-body h3 {
-            font-family: 'IBM Plex Sans Condensed', sans-serif;
+            font-family: 'Space Grotesk', sans-serif;
             font-size: 16px;
             font-weight: 700;
             margin: 24px 0 10px 0;
@@ -1080,7 +1089,7 @@
 
                 <div class="player-panel panel" style="padding: 0; display: flex; flex-direction: column;">
                     <div class="player-header">
-                        <span id="playerTitle" style="font-family: 'IBM Plex Sans Condensed', sans-serif; font-weight: bold; color: var(--primary);">Active Session Console</span>
+                        <span id="playerTitle" style="font-family: 'Space Grotesk', sans-serif; font-weight: bold; color: var(--primary);">Active Session Console</span>
                         <span id="playerStatus" style="font-size: 11px; font-family: monospace; color: var(--text-muted);">Idle</span>
                     </div>
 
@@ -1394,14 +1403,14 @@
                                 <text x="350" y="184" fill="var(--text-muted)" font-size="7" font-family="monospace">Month 12</text>
 
                                 <!-- Legend -->
-                                <rect x="50" y="5" width="8" height="3" fill="#ef4444"/>
+                                <rect x="50" y="5" width="8" height="3" fill="var(--error)"/>
                                 <text x="62" y="8" fill="var(--text-muted)" font-size="7" font-family="monospace">Human Team</text>
-                                <rect x="150" y="5" width="8" height="3" fill="#00d4ff"/>
+                                <rect x="150" y="5" width="8" height="3" fill="var(--secondary)"/>
                                 <text x="162" y="8" fill="var(--text-muted)" font-size="7" font-family="monospace">Agent Pipeline</text>
 
                                 <!-- Savings Curve Lines -->
-                                <path id="humanPath" d="M 40,170 L 380,50" fill="none" stroke="#ef4444" stroke-width="1.5"/>
-                                <path id="agentPath" d="M 40,165 L 380,155" fill="none" stroke="#00d4ff" stroke-width="1.5"/>
+                                <path id="humanPath" d="M 40,170 L 380,50" fill="none" stroke="var(--error)" stroke-width="1.5"/>
+                                <path id="agentPath" d="M 40,165 L 380,155" fill="none" stroke="var(--secondary)" stroke-width="1.5"/>
                                 
                                 <!-- Breakeven point bubble -->
                                 <circle id="breakevenDot" cx="50" cy="165" r="3" fill="var(--success)"/>
@@ -1916,7 +1925,7 @@
             const ctx = canvas.getContext('2d');
             
             // Draw background fill onto canvas first
-            ctx.fillStyle = '#070a13';
+            ctx.fillStyle = '#05070f';
             ctx.fillRect(0,0,800,400);
             
             const img = new Image();
