@@ -1767,6 +1767,8 @@
             const savedUrl = localStorage.getItem('supportops_api_url');
             if (savedUrl) {
                 document.getElementById('apiUrl').value = savedUrl;
+            } else {
+                document.getElementById('apiUrl').value = "https://gaurav711-supportops-env.hf.space";
             }
             calculateSavings();
             
