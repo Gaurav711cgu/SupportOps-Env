@@ -9,17 +9,21 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #05070f;
-            --card-bg: #0c0f1d;
-            --border-color: #171d33;
-            --text-main: #f1f5f9;
-            --text-muted: #7382a0;
-            --primary: #6366f1; /* Electric Indigo */
-            --primary-glow: rgba(99, 102, 241, 0.15);
-            --secondary: #00f5a0; /* Neon Mint */
-            --success: #00f5a0;
-            --error: #ff4a6b; /* Neon Crimson */
-            --warning: #ffd000;
+            --bg-color: #04060f;
+            --card-bg: #0a0e1f;
+            --border-color: #151c35;
+            --text-main: #e8edf8;
+            --text-muted: #6b7a9e;
+            --primary: #7c3aed;         /* Deep Violet */
+            --primary-glow: rgba(124, 58, 237, 0.18);
+            --secondary: #0dd6b8;       /* Electric Teal */
+            --success: #10d98a;         /* Emerald */
+            --error: #f97316;           /* Amber-Orange (no red) */
+            --warning: #f59e0b;         /* Amber */
+            --accent: #38bdf8;          /* Sky Blue */
+            --accent-glow: rgba(56, 189, 248, 0.15);
+            --grad-a: #7c3aed;
+            --grad-b: #0dd6b8;
         }
 
         * {
@@ -56,33 +60,54 @@
             z-index: 100;
         }
 
-        .logo-section h1 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 24px;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-            color: var(--text-main);
+        .logo-section {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 14px;
         }
-
-        .logo-section h1 span {
-            color: var(--secondary);
-            font-size: 12px;
-            border: 1px solid var(--secondary);
-            padding: 2px 8px;
+        .logo-icon {
+            width: 38px;
+            height: 38px;
+            flex-shrink: 0;
+            filter: drop-shadow(0 0 8px rgba(124,58,237,0.5));
+            animation: logoFloat 4s ease-in-out infinite;
+        }
+        @keyframes logoFloat {
+            0%,100% { transform: translateY(0px); }
+            50%      { transform: translateY(-3px); }
+        }
+        .logo-text-group h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .logo-text-group h1 .v-badge {
+            font-size: 10px;
+            padding: 2px 7px;
             border-radius: 4px;
+            background: rgba(124,58,237,0.2);
+            border: 1px solid rgba(124,58,237,0.5);
             font-family: 'JetBrains Mono', monospace;
-            box-shadow: 0 0 8px rgba(0, 245, 160, 0.2);
+            font-weight: 700;
+            letter-spacing: 1px;
             text-transform: uppercase;
-            font-weight: bold;
+            -webkit-text-fill-color: var(--primary);
+            color: var(--primary);
+            box-shadow: 0 0 10px rgba(124,58,237,0.25);
         }
-
-        .logo-section p {
-            font-size: 12px;
+        .logo-text-group p {
+            font-size: 11px;
             color: var(--text-muted);
-            margin-top: 4px;
+            margin-top: 2px;
+            letter-spacing: 0.2px;
         }
 
         nav {
@@ -1417,13 +1442,13 @@
         .svc-name { flex: 1; font-size: 12px; font-weight: 600; color: var(--text-main); font-family: 'Space Grotesk', sans-serif; }
         .svc-badge {
             font-size: 9px; padding: 1px 5px; border-radius: 3px;
-            background: rgba(99,102,241,0.1); color: var(--primary);
-            border: 1px solid rgba(99,102,241,0.3); font-family: monospace; font-weight: 800;
+            background: rgba(139,92,246,0.1); color: var(--primary);
+            border: 1px solid rgba(139,92,246,0.3); font-family: monospace; font-weight: 800;
         }
         .svc-metric { display: flex; align-items: baseline; gap: 5px; }
         .svc-metric-val { font-size: 20px; font-weight: 700; font-family: 'JetBrains Mono', monospace; color: var(--text-main); }
         .svc-metric-lbl { font-size: 11px; color: var(--text-muted); }
-        .svc-bar-bg { height: 4px; background: #1a2235; border-radius: 2px; overflow: hidden; }
+        .svc-bar-bg { height: 4px; background: #0f172a; border-radius: 2px; overflow: hidden; }
         .svc-bar-fill { height: 100%; border-radius: 2px; transition: width 1s ease; }
         .svc-detail { font-size: 10px; color: var(--text-muted); font-family: monospace; }
 
@@ -3364,6 +3389,10 @@
             if (tabId === 'benchmark') {
                 setTimeout(calculateSavings, 50);
             }
+            // Trigger guide charts + animations
+            if (tabId === 'guide') {
+                setTimeout(initGuide, 80);
+            }
         }
 
         // Popovers for heatmap failure modes
@@ -4481,5 +4510,823 @@
             </div>
         </div>
     </div>
+
+    <!-- ════════════════════════════════════════════════════════════════════ -->
+    <!-- ── TAB: HOW IT WORKS (GUIDE + CHARTS) ──────────────────────────── -->
+    <!-- ════════════════════════════════════════════════════════════════════ -->
+    <style>
+        /* ── GUIDE TAB BASE ─────────────────────────────────────────── */
+        #guide { animation: guideIn 0.5s ease; }
+        @keyframes guideIn { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:translateY(0); } }
+
+        /* Hero Banner */
+        .guide-hero {
+            position: relative;
+            border-radius: 20px;
+            padding: 56px 48px;
+            margin-bottom: 40px;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(124,58,237,0.12) 0%, rgba(13,214,184,0.08) 100%);
+            border: 1px solid rgba(124,58,237,0.25);
+        }
+        .guide-hero::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%237c3aed' fill-opacity='0.04'%3E%3Ccircle cx='30' cy='30' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+        .guide-hero-badge {
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 6px 14px; border-radius: 999px;
+            background: rgba(124,58,237,0.15);
+            border: 1px solid rgba(124,58,237,0.4);
+            font-size: 12px; font-weight: 600; color: var(--primary);
+            font-family: monospace; letter-spacing: 0.5px;
+            margin-bottom: 20px;
+        }
+        .guide-hero h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(28px, 4vw, 46px);
+            font-weight: 800; line-height: 1.1;
+            background: linear-gradient(135deg, var(--text-main) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+        }
+        .guide-hero p {
+            font-size: 16px; color: var(--text-muted);
+            max-width: 600px; line-height: 1.7;
+            margin-bottom: 28px;
+        }
+        .guide-hero-stats {
+            display: flex; gap: 32px; flex-wrap: wrap;
+        }
+        .hero-stat { display: flex; flex-direction: column; gap: 2px; }
+        .hero-stat-val {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 28px; font-weight: 700;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-stat-lbl { font-size: 12px; color: var(--text-muted); letter-spacing: 0.4px; }
+
+        /* Step Cards */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        .step-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 28px 24px;
+            position: relative;
+            overflow: hidden;
+            cursor: default;
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        .step-card.visible {
+            opacity: 1; transform: translateY(0);
+            transition: opacity 0.5s ease, transform 0.5s ease, border-color 0.3s, box-shadow 0.3s;
+        }
+        .step-card:hover {
+            transform: translateY(-4px) !important;
+            border-color: var(--primary);
+            box-shadow: 0 16px 40px rgba(124,58,237,0.12);
+        }
+        .step-card::before {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0; height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .step-card:hover::before { opacity: 1; }
+        .step-num {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px; font-weight: 800;
+            color: var(--primary); letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .step-num::after {
+            content: '';
+            flex: 1; height: 1px;
+            background: linear-gradient(90deg, rgba(124,58,237,0.4), transparent);
+        }
+        .step-icon {
+            font-size: 32px; margin-bottom: 14px;
+            display: block;
+        }
+        .step-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 17px; font-weight: 700;
+            color: var(--text-main); margin-bottom: 10px;
+        }
+        .step-desc {
+            font-size: 13px; color: var(--text-muted); line-height: 1.6;
+        }
+        .step-code {
+            margin-top: 14px;
+            padding: 10px 12px;
+            background: rgba(0,0,0,0.35);
+            border: 1px solid rgba(124,58,237,0.2);
+            border-radius: 8px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px; color: var(--secondary);
+            line-height: 1.5;
+        }
+        .step-tag {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 3px 9px;
+            border-radius: 4px;
+            font-size: 10px; font-weight: 700;
+            font-family: monospace; letter-spacing: 0.5px;
+        }
+        .tag-get    { background: rgba(56,189,248,0.1);  color: var(--accent);   border: 1px solid rgba(56,189,248,0.3); }
+        .tag-post   { background: rgba(124,58,237,0.1); color: var(--primary);  border: 1px solid rgba(124,58,237,0.3); }
+        .tag-rl     { background: rgba(13,214,184,0.1); color: var(--secondary);border: 1px solid rgba(13,214,184,0.3); }
+        .tag-llm    { background: rgba(245,158,11,0.1); color: var(--warning);  border: 1px solid rgba(245,158,11,0.3); }
+        .tag-dpo    { background: rgba(16,217,138,0.1); color: var(--success);  border: 1px solid rgba(16,217,138,0.3); }
+        .tag-eval   { background: rgba(249,115,22,0.1); color: var(--error);    border: 1px solid rgba(249,115,22,0.3); }
+
+        /* Chart containers */
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        .chart-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 22px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        .chart-card::after {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0; height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+        .chart-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 14px; font-weight: 700;
+            color: var(--text-main); margin-bottom: 4px;
+        }
+        .chart-sub {
+            font-size: 11px; color: var(--text-muted);
+            margin-bottom: 16px; font-family: monospace;
+        }
+        .chart-canvas { width: 100%; display: block; }
+
+        /* Flow Diagram */
+        .flow-section {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 40px;
+        }
+        .flow-section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 16px; font-weight: 700; color: var(--text-main);
+            margin-bottom: 8px;
+        }
+        .flow-section-sub { font-size: 12px; color: var(--text-muted); margin-bottom: 24px; }
+        .flow-diagram {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            overflow-x: auto;
+            padding-bottom: 8px;
+        }
+        .flow-node {
+            display: flex; flex-direction: column;
+            align-items: center; gap: 8px;
+            flex-shrink: 0;
+        }
+        .flow-node-circle {
+            width: 64px; height: 64px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 22px;
+            border: 2px solid var(--border-color);
+            background: rgba(124,58,237,0.08);
+            transition: all 0.3s ease;
+            cursor: default;
+            position: relative;
+        }
+        .flow-node-circle:hover {
+            border-color: var(--primary);
+            background: rgba(124,58,237,0.2);
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(124,58,237,0.3);
+        }
+        .flow-node-label {
+            font-size: 11px; font-weight: 600; color: var(--text-muted);
+            text-align: center; max-width: 72px; line-height: 1.3;
+        }
+        .flow-arrow {
+            flex-shrink: 0;
+            display: flex; align-items: center;
+            padding: 0 8px;
+            margin-bottom: 26px;
+        }
+        .flow-arrow svg { opacity: 0.4; }
+
+        /* FAQ / Detail cards */
+        .faq-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 40px;
+        }
+        @media (max-width: 720px) { .faq-grid { grid-template-columns: 1fr; } }
+        .faq-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .faq-card:hover { border-color: var(--primary); box-shadow: 0 0 16px var(--primary-glow); }
+        .faq-q {
+            font-weight: 600; font-size: 13px; color: var(--text-main);
+            margin-bottom: 8px; display: flex; align-items: center; gap: 8px;
+        }
+        .faq-q::before { content: '?'; font-family: monospace; font-size: 11px;
+            padding: 1px 5px; background: rgba(124,58,237,0.15);
+            color: var(--primary); border-radius: 3px; font-weight: 800; flex-shrink: 0; }
+        .faq-a { font-size: 12px; color: var(--text-muted); line-height: 1.6; }
+    </style>
+
+    <script>
+    /* ── GUIDE TAB CHARTS ─────────────────────────────────────────────── */
+    function drawLineChart(canvasId, datasets, options={}) {
+        const canvas = document.getElementById(canvasId);
+        if (!canvas) return;
+        const dpr = window.devicePixelRatio || 1;
+        const W = canvas.offsetWidth || 320, H = options.height || 160;
+        canvas.width  = W * dpr;
+        canvas.height = H * dpr;
+        canvas.style.height = H + 'px';
+        const ctx = canvas.getContext('2d');
+        ctx.scale(dpr, dpr);
+        const pad = { top:14, right:16, bottom:32, left:38 };
+        const cW = W - pad.left - pad.right;
+        const cH = H - pad.top  - pad.bottom;
+
+        // Background
+        ctx.fillStyle = 'rgba(0,0,0,0.25)';
+        roundRect(ctx, 0, 0, W, H, 8);
+        ctx.fill();
+
+        // Grid lines
+        const gridY = 5;
+        ctx.strokeStyle = 'rgba(255,255,255,0.04)';
+        ctx.lineWidth = 1;
+        for (let i = 0; i <= gridY; i++) {
+            const y = pad.top + (cH / gridY) * i;
+            ctx.beginPath(); ctx.moveTo(pad.left, y); ctx.lineTo(pad.left + cW, y); ctx.stroke();
+        }
+
+        const maxVal = options.maxVal || Math.max(...datasets.flatMap(d => d.data));
+        const minVal = options.minVal !== undefined ? options.minVal : 0;
+        const range  = maxVal - minVal || 1;
+
+        datasets.forEach(ds => {
+            const pts = ds.data.map((v, i) => ({
+                x: pad.left + (i / (ds.data.length - 1)) * cW,
+                y: pad.top  + cH - ((v - minVal) / range) * cH
+            }));
+            // Gradient fill
+            const grad = ctx.createLinearGradient(0, pad.top, 0, pad.top + cH);
+            grad.addColorStop(0, ds.color.replace(')', ',0.3)').replace('rgb', 'rgba'));
+            grad.addColorStop(1, ds.color.replace(')', ',0)').replace('rgb', 'rgba'));
+            ctx.beginPath();
+            ctx.moveTo(pts[0].x, pad.top + cH);
+            pts.forEach(p => ctx.lineTo(p.x, p.y));
+            ctx.lineTo(pts[pts.length-1].x, pad.top + cH);
+            ctx.closePath();
+            ctx.fillStyle = grad;
+            ctx.fill();
+            // Line
+            ctx.beginPath();
+            ctx.moveTo(pts[0].x, pts[0].y);
+            for (let i = 1; i < pts.length; i++) {
+                const cp = { x:(pts[i-1].x+pts[i].x)/2, y:(pts[i-1].y+pts[i].y)/2 };
+                ctx.quadraticCurveTo(pts[i-1].x, pts[i-1].y, cp.x, cp.y);
+            }
+            ctx.lineTo(pts[pts.length-1].x, pts[pts.length-1].y);
+            ctx.strokeStyle = ds.color;
+            ctx.lineWidth = 2.5;
+            ctx.lineJoin = 'round';
+            ctx.stroke();
+            // Dots
+            pts.forEach(p => {
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, 3, 0, Math.PI*2);
+                ctx.fillStyle = ds.color;
+                ctx.fill();
+            });
+        });
+
+        // Y axis labels
+        ctx.fillStyle = 'rgba(107,122,158,0.8)';
+        ctx.font = '9px monospace';
+        ctx.textAlign = 'right';
+        for (let i = 0; i <= gridY; i++) {
+            const v = minVal + (range / gridY) * (gridY - i);
+            const y = pad.top + (cH / gridY) * i;
+            ctx.fillText(v.toFixed(options.decimals !== undefined ? options.decimals : 2), pad.left - 4, y + 3);
+        }
+
+        // X labels
+        if (options.xLabels) {
+            ctx.textAlign = 'center';
+            ctx.fillStyle = 'rgba(107,122,158,0.7)';
+            const step = Math.ceil(options.xLabels.length / 6);
+            options.xLabels.forEach((lbl, i) => {
+                if (i % step === 0) {
+                    const x = pad.left + (i / (options.xLabels.length - 1)) * cW;
+                    ctx.fillText(lbl, x, H - 8);
+                }
+            });
+        }
+    }
+
+    function drawBarChart(canvasId, labels, datasets, options={}) {
+        const canvas = document.getElementById(canvasId);
+        if (!canvas) return;
+        const dpr = window.devicePixelRatio || 1;
+        const W = canvas.offsetWidth || 320, H = options.height || 180;
+        canvas.width  = W * dpr;
+        canvas.height = H * dpr;
+        canvas.style.height = H + 'px';
+        const ctx = canvas.getContext('2d');
+        ctx.scale(dpr, dpr);
+        const pad = { top:14, right:12, bottom:40, left:38 };
+        const cW = W - pad.left - pad.right;
+        const cH = H - pad.top  - pad.bottom;
+
+        ctx.fillStyle = 'rgba(0,0,0,0.25)';
+        roundRect(ctx, 0, 0, W, H, 8); ctx.fill();
+
+        // grid
+        const gridY = 4;
+        ctx.strokeStyle = 'rgba(255,255,255,0.04)'; ctx.lineWidth = 1;
+        for (let i = 0; i <= gridY; i++) {
+            const y = pad.top + (cH / gridY) * i;
+            ctx.beginPath(); ctx.moveTo(pad.left, y); ctx.lineTo(pad.left + cW, y); ctx.stroke();
+        }
+
+        const maxVal = options.maxVal || Math.max(...datasets.flatMap(d => d.data));
+        const groupW = cW / labels.length;
+        const barW   = (groupW / datasets.length) * 0.72;
+        const gapW   = (groupW - barW * datasets.length) / (datasets.length + 1);
+
+        datasets.forEach((ds, di) => {
+            ds.data.forEach((v, gi) => {
+                const bH = (v / maxVal) * cH;
+                const x  = pad.left + gi * groupW + gapW + di * (barW + gapW);
+                const y  = pad.top + cH - bH;
+                const grad = ctx.createLinearGradient(x, y, x, y + bH);
+                grad.addColorStop(0, ds.color);
+                grad.addColorStop(1, ds.color.replace(')', ',0.4)').replace('rgb','rgba'));
+                ctx.fillStyle = grad;
+                roundRectFill(ctx, x, y, barW, bH, [4,4,0,0]);
+                ctx.fillStyle = ds.color;
+            });
+        });
+
+        // x labels
+        ctx.fillStyle = 'rgba(107,122,158,0.8)';
+        ctx.font = '9.5px monospace';
+        ctx.textAlign = 'center';
+        labels.forEach((lbl, i) => {
+            const x = pad.left + i * groupW + groupW / 2;
+            ctx.fillText(lbl, x, H - 12);
+            ctx.fillText(lbl.split('\n')[1] || '', x, H - 2);
+        });
+        // y labels
+        ctx.textAlign = 'right';
+        for (let i = 0; i <= gridY; i++) {
+            const v = maxVal * (1 - i / gridY);
+            const y = pad.top + (cH / gridY) * i;
+            ctx.fillText(v.toFixed(2), pad.left - 4, y + 3);
+        }
+
+        // legend
+        datasets.forEach((ds, i) => {
+            ctx.fillStyle = ds.color;
+            ctx.fillRect(pad.left + i * 100, pad.top - 10, 8, 8);
+            ctx.fillStyle = 'rgba(107,122,158,0.8)';
+            ctx.textAlign = 'left';
+            ctx.font = '9px monospace';
+            ctx.fillText(ds.label, pad.left + i * 100 + 12, pad.top - 3);
+        });
+    }
+
+    function drawDonut(canvasId, segments, options={}) {
+        const canvas = document.getElementById(canvasId);
+        if (!canvas) return;
+        const dpr = window.devicePixelRatio || 1;
+        const S = options.size || 160;
+        canvas.width  = S * dpr;
+        canvas.height = S * dpr;
+        canvas.style.width  = S + 'px';
+        canvas.style.height = S + 'px';
+        const ctx = canvas.getContext('2d');
+        ctx.scale(dpr, dpr);
+        const cx = S / 2, cy = S / 2, R = S * 0.38, r = S * 0.24;
+        const total = segments.reduce((a, s) => a + s.value, 0);
+        let angle = -Math.PI / 2;
+        segments.forEach(seg => {
+            const sweep = (seg.value / total) * Math.PI * 2;
+            ctx.beginPath();
+            ctx.moveTo(cx, cy);
+            ctx.arc(cx, cy, R, angle, angle + sweep);
+            ctx.closePath();
+            ctx.fillStyle = seg.color;
+            ctx.fill();
+            angle += sweep;
+        });
+        // hole
+        ctx.beginPath();
+        ctx.arc(cx, cy, r, 0, Math.PI * 2);
+        ctx.fillStyle = '#0a0e1f';
+        ctx.fill();
+        // center text
+        ctx.fillStyle = '#e8edf8';
+        ctx.font = `bold ${S * 0.12}px 'JetBrains Mono'`;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(options.center || '', cx, cy);
+    }
+
+    function roundRect(ctx, x, y, w, h, r) {
+        ctx.beginPath();
+        ctx.moveTo(x+r, y);
+        ctx.lineTo(x+w-r, y);
+        ctx.quadraticCurveTo(x+w, y, x+w, y+r);
+        ctx.lineTo(x+w, y+h-r);
+        ctx.quadraticCurveTo(x+w, y+h, x+w-r, y+h);
+        ctx.lineTo(x+r, y+h);
+        ctx.quadraticCurveTo(x, y+h, x, y+h-r);
+        ctx.lineTo(x, y+r);
+        ctx.quadraticCurveTo(x, y, x+r, y);
+        ctx.closePath();
+    }
+    function roundRectFill(ctx, x, y, w, h, radii) {
+        const [tl,tr,br,bl] = radii;
+        ctx.beginPath();
+        ctx.moveTo(x+tl, y);
+        ctx.lineTo(x+w-tr, y); ctx.quadraticCurveTo(x+w, y, x+w, y+tr);
+        ctx.lineTo(x+w, y+h-br); ctx.quadraticCurveTo(x+w, y+h, x+w-br, y+h);
+        ctx.lineTo(x+bl, y+h); ctx.quadraticCurveTo(x, y+h, x, y+h-bl);
+        ctx.lineTo(x, y+tl); ctx.quadraticCurveTo(x, y, x+tl, y);
+        ctx.closePath();
+        ctx.fill();
+    }
+
+    function initGuideCharts() {
+        // Chart 1: Reward Curve over episodes
+        const eps = Array.from({length:20}, (_,i)=>i+1);
+        drawLineChart('chartReward', [
+            { label:'Claude 3.5', color:'#7c3aed', data:[0.31,0.38,0.44,0.52,0.58,0.61,0.66,0.71,0.74,0.76,0.79,0.81,0.83,0.84,0.86,0.87,0.88,0.89,0.90,0.91] },
+            { label:'Mistral-7B', color:'#f97316', data:[0.28,0.35,0.40,0.45,0.50,0.48,0.52,0.55,0.58,0.57,0.59,0.60,0.61,0.62,0.62,0.63,0.63,0.64,0.64,0.65] }
+        ], { height:170, maxVal:1.0, minVal:0.2, decimals:2,
+             xLabels: eps.map(String) });
+
+        // Chart 2: Task difficulty breakdown
+        drawBarChart('chartDifficulty', ['Easy\nRoute','Medium\nTriage','Hard\nResolve'], [
+            { label:'Claude 3.5', color:'#7c3aed', data:[0.96, 0.89, 0.74] },
+            { label:'Mistral-7B', color:'#f97316', data:[0.82, 0.68, 0.51] },
+            { label:'GPT-4o',     color:'#0dd6b8', data:[0.94, 0.87, 0.79] }
+        ], { height:180, maxVal:1.0 });
+
+        // Chart 3: Hack rate comparison
+        drawBarChart('chartHack', ['Claude\n3.5','Mistral\n7B','GPT-4o','Llama\n3.1'], [
+            { label:'Hack Rate %', color:'#f97316', data:[0.025, 0.425, 0.038, 0.31] }
+        ], { height:180, maxVal:0.5 });
+
+        // Chart 4: Step budget usage donut
+        drawDonut('chartDonut', [
+            { value:38, color:'#7c3aed' },
+            { value:29, color:'#0dd6b8' },
+            { value:21, color:'#f59e0b' },
+            { value:12, color:'#f97316' }
+        ], { size:150, center:'~6.2' });
+
+        // Chart 5: Training loss
+        drawLineChart('chartLoss', [
+            { label:'Train Loss', color:'#7c3aed', data:[1.82,1.54,1.31,1.14,0.98,0.87,0.77,0.69,0.63,0.58,0.54,0.51,0.48,0.46,0.44,0.43,0.42,0.41,0.40,0.39] },
+            { label:'Val Loss',   color:'#0dd6b8', data:[1.90,1.61,1.38,1.22,1.05,0.95,0.85,0.78,0.72,0.67,0.63,0.60,0.58,0.56,0.55,0.54,0.53,0.52,0.52,0.51] }
+        ], { height:170, maxVal:2.0, minVal:0.3, decimals:2,
+             xLabels: eps.map(String) });
+
+        // Chart 6: Reward distribution histogram bars
+        drawBarChart('chartDist', ['0–0.2','0.2–0.4','0.4–0.6','0.6–0.8','0.8–1.0'], [
+            { label:'Claude 3.5', color:'#7c3aed', data:[0.02,0.05,0.11,0.28,0.54] },
+            { label:'Mistral-7B', color:'#f97316', data:[0.08,0.18,0.31,0.27,0.16] }
+        ], { height:180, maxVal:0.6 });
+    }
+
+    // Intersection observer for step card animations
+    function initStepCards() {
+        const cards = document.querySelectorAll('.step-card');
+        const obs = new IntersectionObserver((entries) => {
+            entries.forEach((e, _) => {
+                if (e.isIntersecting) {
+                    setTimeout(() => e.target.classList.add('visible'),
+                        parseInt(e.target.dataset.delay || 0));
+                    obs.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        cards.forEach(c => obs.observe(c));
+    }
+
+    // Animated counter
+    function animateCounter(el, target, duration=1200, decimals=0) {
+        const start = performance.now();
+        const update = (now) => {
+            const t = Math.min((now - start) / duration, 1);
+            const eased = 1 - Math.pow(1 - t, 3);
+            el.textContent = (target * eased).toFixed(decimals);
+            if (t < 1) requestAnimationFrame(update);
+        };
+        requestAnimationFrame(update);
+    }
+
+    function initGuideCounters() {
+        animateCounter(document.getElementById('ctr-episodes'), 300, 1200, 0);
+        animateCounter(document.getElementById('ctr-models'),   4,   800, 0);
+        animateCounter(document.getElementById('ctr-tasks'),    3,   600, 0);
+        animateCounter(document.getElementById('ctr-peak'),     0.96, 1400, 2);
+    }
+
+    // Called when guide tab is activated
+    function initGuide() {
+        initStepCards();
+        setTimeout(initGuideCounters, 200);
+        setTimeout(initGuideCharts,   400);
+    }
+    </script>
+
+    <!-- ══ GUIDE TAB CONTENT ══════════════════════════════════════════════ -->
+    <div id="guide" class="tab-content" style="padding-bottom:60px;">
+
+        <!-- Hero -->
+        <div class="guide-hero">
+            <div class="guide-hero-badge">📖 INTERACTIVE GUIDE &nbsp;·&nbsp; HOW IT WORKS</div>
+            <h2>From Raw Ticket to<br>Trained RL Agent</h2>
+            <p>SupportOps is a fully stateful reinforcement-learning environment where LLM agents handle customer-support tickets. Follow the 6-step flow below to understand every component.</p>
+            <div class="guide-hero-stats">
+                <div class="hero-stat"><span class="hero-stat-val" id="ctr-episodes">0</span><span class="hero-stat-lbl">Episodes Run</span></div>
+                <div class="hero-stat"><span class="hero-stat-val" id="ctr-models">0</span><span class="hero-stat-lbl">Models Benchmarked</span></div>
+                <div class="hero-stat"><span class="hero-stat-val" id="ctr-tasks">0</span><span class="hero-stat-lbl">Task Difficulties</span></div>
+                <div class="hero-stat"><span class="hero-stat-val" id="ctr-peak">0</span><span class="hero-stat-lbl">Peak Reward Score</span></div>
+            </div>
+        </div>
+
+        <!-- Flow Diagram -->
+        <div class="flow-section">
+            <div class="flow-section-title">System Architecture Flow</div>
+            <div class="flow-section-sub">Each ticket travels through this pipeline before a reward signal is computed.</div>
+            <div class="flow-diagram">
+                <div class="flow-node">
+                    <div class="flow-node-circle" title="Raw customer ticket arrives">🎫</div>
+                    <div class="flow-node-label">Ticket<br>Input</div>
+                </div>
+                <div class="flow-arrow"><svg width="32" height="12"><path d="M0 6 L26 6 M20 1 L26 6 L20 11" stroke="#7c3aed" stroke-width="1.5" fill="none"/></svg></div>
+                <div class="flow-node">
+                    <div class="flow-node-circle" title="BERT NER strips PII">🔒</div>
+                    <div class="flow-node-label">PII<br>Masker</div>
+                </div>
+                <div class="flow-arrow"><svg width="32" height="12"><path d="M0 6 L26 6 M20 1 L26 6 L20 11" stroke="#7c3aed" stroke-width="1.5" fill="none"/></svg></div>
+                <div class="flow-node">
+                    <div class="flow-node-circle" title="Kafka routes ticket to correct queue">📨</div>
+                    <div class="flow-node-label">Kafka<br>Router</div>
+                </div>
+                <div class="flow-arrow"><svg width="32" height="12"><path d="M0 6 L26 6 M20 1 L26 6 L20 11" stroke="#7c3aed" stroke-width="1.5" fill="none"/></svg></div>
+                <div class="flow-node">
+                    <div class="flow-node-circle" title="LLM Agent selects action from action space">🤖</div>
+                    <div class="flow-node-label">LLM<br>Agent</div>
+                </div>
+                <div class="flow-arrow"><svg width="32" height="12"><path d="M0 6 L26 6 M20 1 L26 6 L20 11" stroke="#7c3aed" stroke-width="1.5" fill="none"/></svg></div>
+                <div class="flow-node">
+                    <div class="flow-node-circle" title="Dual-signal grader scores the response">⚖️</div>
+                    <div class="flow-node-label">Dual<br>Grader</div>
+                </div>
+                <div class="flow-arrow"><svg width="32" height="12"><path d="M0 6 L26 6 M20 1 L26 6 L20 11" stroke="#7c3aed" stroke-width="1.5" fill="none"/></svg></div>
+                <div class="flow-node">
+                    <div class="flow-node-circle" title="Reward signal for RL training">🏆</div>
+                    <div class="flow-node-label">Reward<br>Signal</div>
+                </div>
+                <div class="flow-arrow"><svg width="32" height="12"><path d="M0 6 L26 6 M20 1 L26 6 L20 11" stroke="#0dd6b8" stroke-width="1.5" fill="none"/></svg></div>
+                <div class="flow-node">
+                    <div class="flow-node-circle" title="DPO/RLHF trains the model on preference pairs" style="border-color:rgba(13,214,184,0.4);background:rgba(13,214,184,0.08);">📈</div>
+                    <div class="flow-node-label">DPO<br>Training</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step Cards -->
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;color:var(--text-main);margin-bottom:20px;">
+            6-Step Walkthrough
+        </div>
+        <div class="steps-grid">
+
+            <div class="step-card" data-delay="0">
+                <div class="step-num">Step 01</div>
+                <span class="step-icon">🌐</span>
+                <div class="step-title">Connect Your Backend</div>
+                <div class="step-desc">Open the <strong>Agent Sandbox</strong> tab. The default backend is a hosted HuggingFace Space. To use your own, paste your URL in the <em>API Endpoint Override</em> field and click ⚡ to verify.</div>
+                <div class="step-code">GET  https://your-space.hf.space/
+→ {"status": "ok", "env": "SupportOps-v2"}</div>
+                <span class="step-tag tag-get">GET /</span>
+            </div>
+
+            <div class="step-card" data-delay="80">
+                <div class="step-num">Step 02</div>
+                <span class="step-icon">🎫</span>
+                <div class="step-title">Select a Task &amp; Ticket</div>
+                <div class="step-desc">Choose a <strong>difficulty level</strong> (Easy → Route, Medium → Triage, Hard → Resolve) and pick a pre-loaded support ticket from the dropdown. Each ticket is a real-world style customer scenario.</div>
+                <div class="step-code">POST /reset
+{"task": "resolve", "ticket_id": "T-1042"}
+→ {"obs": {...}, "step": 0}</div>
+                <span class="step-tag tag-post">POST /reset</span>
+            </div>
+
+            <div class="step-card" data-delay="160">
+                <div class="step-num">Step 03</div>
+                <span class="step-icon">🤖</span>
+                <div class="step-title">Watch the Agent Act</div>
+                <div class="step-desc">Click <strong>Initialize Episode</strong> then <strong>Execute Step</strong>. The LLM agent reads the ticket state and emits one action per step: <code>route</code>, <code>respond</code>, <code>escalate</code>, or <code>close</code>.</div>
+                <div class="step-code">POST /step
+{"action": {"type": "respond",
+  "content": "Thank you for contacting…"}}
+→ {"obs":{...}, "reward": 0.87}</div>
+                <span class="step-tag tag-post">POST /step</span>
+            </div>
+
+            <div class="step-card" data-delay="240">
+                <div class="step-num">Step 04</div>
+                <span class="step-icon">⚖️</span>
+                <div class="step-title">Read the Reward Signal</div>
+                <div class="step-desc">Each step returns a reward in <strong>[0, 1]</strong> from the Dual-Signal Grader — 50% keyword recall score + 50% LLM semantic judge. Watch it update in the Live State Inspector panel in real time.</div>
+                <div class="step-code">R = 0.5 × KW_overlap
+  + 0.5 × LLM_judge_score</div>
+                <span class="step-tag tag-rl">RL REWARD</span>
+                <span class="step-tag tag-llm" style="margin-left:4px;">LLM JUDGE</span>
+            </div>
+
+            <div class="step-card" data-delay="320">
+                <div class="step-num">Step 05</div>
+                <span class="step-icon">🆚</span>
+                <div class="step-title">Compare Aligned vs Hacked</div>
+                <div class="step-desc">Click <strong>"Compare Aligned vs. Hacked Runs"</strong> to see side-by-side trajectories. Claude 3.5 (aligned) writes coherent responses. Mistral-7B exploits the keyword scorer with stuffed lists — <em>reward hacking</em> in action.</div>
+                <div class="step-code">Aligned:  R = 0.91  ✔ coherent
+Hacked:   R = 0.83  ✖ stuffed list
+           "refund invoice billing…"</div>
+                <span class="step-tag tag-eval">EVAL</span>
+            </div>
+
+            <div class="step-card" data-delay="400">
+                <div class="step-num">Step 06</div>
+                <span class="step-icon">🧠</span>
+                <div class="step-title">Export DPO Pairs for Training</div>
+                <div class="step-desc">In the Sandbox sidebar, click <strong>⚡ Generate DPO Pair View</strong>. This creates a preference pair (chosen/rejected) from your trajectory — ready to feed into a DPO fine-tuning run via the export JSON.</div>
+                <div class="step-code">{"prompt": "…ticket context…",
+ "chosen":  "…aligned response…",
+ "rejected":"…hacked response…"}</div>
+                <span class="step-tag tag-dpo">DPO / RLHF</span>
+            </div>
+
+        </div>
+
+        <!-- Metric Charts -->
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;color:var(--text-main);margin-bottom:8px;">Live Benchmark Metrics</div>
+        <div style="font-size:13px;color:var(--text-muted);margin-bottom:24px;">All charts reflect 300 evaluation episodes across 4 models and 3 task difficulty tiers.</div>
+
+        <div class="charts-grid">
+
+            <!-- Reward Curve -->
+            <div class="chart-card" style="grid-column: span 2;">
+                <div class="chart-title">Episode Reward Curve — Claude 3.5 vs Mistral-7B</div>
+                <div class="chart-sub">Mean reward per episode over training · Resolve (Hard) task · γ = 0.99</div>
+                <canvas id="chartReward" class="chart-canvas"></canvas>
+                <div style="display:flex;gap:20px;margin-top:12px;">
+                    <span style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text-muted);"><span style="width:12px;height:12px;border-radius:2px;background:#7c3aed;display:inline-block;"></span> Claude 3.5 (Aligned)</span>
+                    <span style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text-muted);"><span style="width:12px;height:12px;border-radius:2px;background:#f97316;display:inline-block;"></span> Mistral-7B (Unaligned)</span>
+                </div>
+            </div>
+
+            <!-- Task difficulty -->
+            <div class="chart-card">
+                <div class="chart-title">Performance by Task Difficulty</div>
+                <div class="chart-sub">Mean reward · 3 models · Easy / Medium / Hard</div>
+                <canvas id="chartDifficulty" class="chart-canvas"></canvas>
+            </div>
+
+            <!-- Hack Rate -->
+            <div class="chart-card">
+                <div class="chart-title">Reward Hack Rate by Model</div>
+                <div class="chart-sub">% of episodes flagged as keyword-stuffed</div>
+                <canvas id="chartHack" class="chart-canvas"></canvas>
+            </div>
+
+            <!-- Training Loss -->
+            <div class="chart-card">
+                <div class="chart-title">DPO Training &amp; Validation Loss</div>
+                <div class="chart-sub">Smoothed cross-entropy loss over 20 epochs · Adam lr=1e-4</div>
+                <canvas id="chartLoss" class="chart-canvas"></canvas>
+                <div style="display:flex;gap:20px;margin-top:12px;">
+                    <span style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text-muted);"><span style="width:12px;height:12px;border-radius:2px;background:#7c3aed;display:inline-block;"></span> Train</span>
+                    <span style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text-muted);"><span style="width:12px;height:12px;border-radius:2px;background:#0dd6b8;display:inline-block;"></span> Validation</span>
+                </div>
+            </div>
+
+            <!-- Reward distribution -->
+            <div class="chart-card">
+                <div class="chart-title">Reward Distribution Histogram</div>
+                <div class="chart-sub">Episodes bucketed by final reward score</div>
+                <canvas id="chartDist" class="chart-canvas"></canvas>
+            </div>
+
+            <!-- Donut + legend -->
+            <div class="chart-card" style="display:flex;align-items:center;gap:24px;flex-wrap:wrap;">
+                <div>
+                    <div class="chart-title">Avg Step Budget Used</div>
+                    <div class="chart-sub">Mean steps out of max H = 10</div>
+                    <canvas id="chartDonut" class="chart-canvas" style="width:150px;"></canvas>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:10px;flex:1;min-width:120px;">
+                    <div style="display:flex;align-items:center;gap:8px;">
+                        <span style="width:11px;height:11px;border-radius:2px;background:#7c3aed;flex-shrink:0;"></span>
+                        <span style="font-size:11px;color:var(--text-muted);">Resolve (Hard) · 38%</span>
+                    </div>
+                    <div style="display:flex;align-items:center;gap:8px;">
+                        <span style="width:11px;height:11px;border-radius:2px;background:#0dd6b8;flex-shrink:0;"></span>
+                        <span style="font-size:11px;color:var(--text-muted);">Triage (Med) · 29%</span>
+                    </div>
+                    <div style="display:flex;align-items:center;gap:8px;">
+                        <span style="width:11px;height:11px;border-radius:2px;background:#f59e0b;flex-shrink:0;"></span>
+                        <span style="font-size:11px;color:var(--text-muted);">Route (Easy) · 21%</span>
+                    </div>
+                    <div style="display:flex;align-items:center;gap:8px;">
+                        <span style="width:11px;height:11px;border-radius:2px;background:#f97316;flex-shrink:0;"></span>
+                        <span style="font-size:11px;color:var(--text-muted);">Escalated · 12%</span>
+                    </div>
+                    <div style="margin-top:8px;padding:10px;background:rgba(124,58,237,0.08);border:1px solid rgba(124,58,237,0.2);border-radius:8px;">
+                        <div style="font-size:24px;font-weight:800;font-family:'JetBrains Mono',monospace;color:var(--primary);">6.2</div>
+                        <div style="font-size:11px;color:var(--text-muted);">avg steps / episode</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- FAQ / Tips -->
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;color:var(--text-main);margin-bottom:20px;">Common Questions</div>
+        <div class="faq-grid">
+            <div class="faq-card">
+                <div class="faq-q">What is reward hacking?</div>
+                <div class="faq-a">When an agent exploits loopholes in the reward function — e.g. outputting a raw comma-separated list of keywords to maximize the KW-overlap score without producing a coherent response. SupportOps detects and penalises this via the LLM judge component.</div>
+            </div>
+            <div class="faq-card">
+                <div class="faq-q">Do I need my own backend?</div>
+                <div class="faq-a">No — the default HuggingFace Space backend works for all demos. Use the <em>API Endpoint Override</em> only if you want to run a local FastAPI server for custom experiments or lower latency.</div>
+            </div>
+            <div class="faq-card">
+                <div class="faq-q">What is the Dual-Signal Grader?</div>
+                <div class="faq-a">A hybrid evaluation system combining a deterministic keyword-overlap scorer (fast, cheap) with an LLM-as-judge semantic scorer. The 50/50 blend prevents pure keyword hacking while keeping costs reasonable.</div>
+            </div>
+            <div class="faq-card">
+                <div class="faq-q">How does DPO training work here?</div>
+                <div class="faq-a">Each episode generates a chosen (high-reward aligned response) and a rejected (low-reward hacked response) pair. These pairs are exported as JSON and can be fed directly into a DPO fine-tuning loop using HuggingFace TRL or similar.</div>
+            </div>
+            <div class="faq-card">
+                <div class="faq-q">What is the step horizon?</div>
+                <div class="faq-a">Each episode is capped at 10 agent steps (H = 10). If the agent doesn't resolve or close the ticket within 10 steps it receives partial reward only, incentivising efficient multi-turn behaviour.</div>
+            </div>
+            <div class="faq-card">
+                <div class="faq-q">What does γ = 0.99 mean?</div>
+                <div class="faq-a">The discount factor γ = 0.99 means future rewards are barely discounted — the agent is incentivised to care about the quality of the final resolution, not just the immediate step reward. This produces more coherent multi-turn trajectories.</div>
+            </div>
+        </div>
+
+    </div><!-- /guide -->
+
 </body>
 </html>
