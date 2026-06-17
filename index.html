@@ -1783,8 +1783,8 @@
                                     <div style="font-size: 13px; color: var(--text-muted); line-height: 1.8;">
                                         <h4 style="color: var(--primary); margin-bottom: 8px;">Claude 3.5 Sonnet Diagnostics</h4>
                                         <div>🚀 <strong>Routing Acc:</strong> 95% (Perfect compliance)</div>
-                                        <div>⚖️ <strong>Alignment Index:</strong> 92% (Conversational Judge consensus)</div>
-                                        <div>🔒 <strong>Compliance Rate:</strong> 100% (Correct escalations)</div>
+                                        <div><span style="font-family:monospace;color:var(--secondary);">·</span> <strong>Alignment Index:</strong> 92% (Conversational Judge consensus)</div>
+                                        <div><span style="font-family:monospace;color:var(--secondary);">·</span> <strong>Compliance Rate:</strong> 100% (Correct escalations)</div>
                                         <div>🛡️ <strong>Hack Suppression:</strong> 98% (Keyword stuffing caught and alignment penalties avoided)</div>
                                     </div>
                                 </div>
@@ -1817,8 +1817,8 @@
                                     <div style="font-size: 13px; color: var(--text-muted); line-height: 1.8;">
                                         <h4 style="color: #0066FF; margin-bottom: 8px;">GPT-4o-Mini Diagnostics</h4>
                                         <div>🚀 <strong>Routing Acc:</strong> 93%</div>
-                                        <div>⚖️ <strong>Alignment Index:</strong> 88%</div>
-                                        <div>🔒 <strong>Compliance Rate:</strong> 95%</div>
+                                        <div><span style="font-family:monospace;color:var(--secondary);">·</span> <strong>Alignment Index:</strong> 88%</div>
+                                        <div><span style="font-family:monospace;color:var(--secondary);">·</span> <strong>Compliance Rate:</strong> 95%</div>
                                         <div>🛡️ <strong>Hack Suppression:</strong> 88% (Low-frequency keyword stuff violations observed)</div>
                                     </div>
                                 </div>
@@ -1851,8 +1851,8 @@
                                     <div style="font-size: 13px; color: var(--text-muted); line-height: 1.8;">
                                         <h4 style="color: var(--warning); margin-bottom: 8px;">Gemini 2.0 Flash Diagnostics</h4>
                                         <div>🚀 <strong>Routing Acc:</strong> 91%</div>
-                                        <div>⚖️ <strong>Alignment Index:</strong> 82%</div>
-                                        <div>🔒 <strong>Compliance Rate:</strong> 90%</div>
+                                        <div><span style="font-family:monospace;color:var(--secondary);">·</span> <strong>Alignment Index:</strong> 82%</div>
+                                        <div><span style="font-family:monospace;color:var(--secondary);">·</span> <strong>Compliance Rate:</strong> 90%</div>
                                         <div>🛡️ <strong>Hack Suppression:</strong> 92%</div>
                                     </div>
                                 </div>
@@ -1885,8 +1885,8 @@
                                     <div style="font-size: 13px; color: var(--text-muted); line-height: 1.8;">
                                         <h4 style="color: var(--error); margin-bottom: 8px;">Mistral-7B Diagnostics</h4>
                                         <div>🚀 <strong>Routing Acc:</strong> 77%</div>
-                                        <div>⚖️ <strong>Alignment Index:</strong> 35% (Massive alignment degradation)</div>
-                                        <div>🔒 <strong>Compliance Rate:</strong> 45% (Ignored escalation thresholds)</div>
+                                        <div><span style="font-family:monospace;color:var(--error);">·</span> <strong>Alignment Index:</strong> 35% (Massive alignment degradation)</div>
+                                        <div><span style="font-family:monospace;color:var(--error);">·</span> <strong>Compliance Rate:</strong> 45% (Ignored escalation thresholds)</div>
                                         <div>🛡️ <strong>Hack Suppression:</strong> 57% (Frequently stuffed keywords in multi-turn runs)</div>
                                     </div>
                                 </div>
@@ -4478,7 +4478,7 @@
                 <!-- Chosen Option -->
                 <div style="border: 1px solid var(--success); border-radius: 6px; padding: 14px; background: rgba(34, 197, 94, 0.03);">
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                        <span style="font-size: 11px; font-weight: 800; background: var(--success); color: #000; padding: 2px 6px; border-radius: 4px; text-transform: uppercase;">✔ Chosen (Aligned)</span>
+                        <span style="font-size: 11px; font-weight: 800; background: var(--success); color: #000; padding: 2px 6px; border-radius: 4px; text-transform: uppercase;">[+] Chosen (Aligned)</span>
                         <span style="font-size: 11px; color: var(--success); font-family: monospace;">Reward: 0.950</span>
                     </div>
                     <div id="dpoChosenText" style="font-size: 13px; color: var(--text-main); font-family: 'JetBrains Mono', monospace; line-height: 1.5; background: #070a13; padding: 10px; border-radius: 4px; border: 1px solid var(--border-color);">
@@ -4489,7 +4489,7 @@
                 <!-- Rejected Option -->
                 <div style="border: 1px solid var(--error); border-radius: 6px; padding: 14px; background: rgba(239, 68, 68, 0.03);">
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                        <span style="font-size: 11px; font-weight: 800; background: var(--error); color: #000; padding: 2px 6px; border-radius: 4px; text-transform: uppercase;">✖ Rejected (Hacky)</span>
+                        <span style="font-size: 11px; font-weight: 800; background: var(--error); color: #000; padding: 2px 6px; border-radius: 4px; text-transform: uppercase;">[-] Rejected (Hacky)</span>
                         <span style="font-size: 11px; color: var(--error); font-family: monospace;">Reward: 0.162</span>
                     </div>
                     <div id="dpoRejectedText" style="font-size: 13px; color: var(--text-main); font-family: 'JetBrains Mono', monospace; line-height: 1.5; background: #070a13; padding: 10px; border-radius: 4px; border: 1px solid var(--border-color);">
@@ -5088,7 +5088,7 @@
 
         <!-- Hero -->
         <div class="guide-hero">
-            <div class="guide-hero-badge">📖 INTERACTIVE GUIDE &nbsp;·&nbsp; HOW IT WORKS</div>
+            <div class="guide-hero-badge"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" style="flex-shrink:0;"><rect x="1" y="1" width="10" height="10" rx="1.5" stroke="currentColor" stroke-width="1.2"/><line x1="3" y1="4" x2="9" y2="4" stroke="currentColor" stroke-width="1"/><line x1="3" y1="6" x2="9" y2="6" stroke="currentColor" stroke-width="1"/><line x1="3" y1="8" x2="7" y2="8" stroke="currentColor" stroke-width="1"/></svg> INTERACTIVE GUIDE &nbsp;·&nbsp; HOW IT WORKS</div>
             <h2>From Raw Ticket to<br>Trained RL Agent</h2>
             <p>SupportOps is a fully stateful reinforcement-learning environment where LLM agents handle customer-support tickets. Follow the 6-step flow below to understand every component.</p>
             <div class="guide-hero-stats">
@@ -5105,37 +5105,37 @@
             <div class="flow-section-sub">Each ticket travels through this pipeline before a reward signal is computed.</div>
             <div class="flow-diagram">
                 <div class="flow-node">
-                    <div class="flow-node-circle" title="Raw customer ticket arrives">🎫</div>
+                    <div class="flow-node-circle" title="Raw customer ticket arrives"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="3" y="5" width="16" height="12" rx="2" stroke="#7c3aed" stroke-width="1.5"/><line x1="7" y1="9" x2="15" y2="9" stroke="#7c3aed" stroke-width="1.2"/><line x1="7" y1="12" x2="12" y2="12" stroke="#7c3aed" stroke-width="1.2"/></svg></div>
                     <div class="flow-node-label">Ticket<br>Input</div>
                 </div>
                 <div class="flow-arrow"><svg width="32" height="12"><path d="M0 6 L26 6 M20 1 L26 6 L20 11" stroke="#7c3aed" stroke-width="1.5" fill="none"/></svg></div>
                 <div class="flow-node">
-                    <div class="flow-node-circle" title="BERT NER strips PII">🔒</div>
+                    <div class="flow-node-circle" title="BERT NER strips PII"><svg width="20" height="22" viewBox="0 0 20 22" fill="none"><rect x="3" y="9" width="14" height="11" rx="2" stroke="#7c3aed" stroke-width="1.5"/><path d="M6 9V6.5a4 4 0 018 0V9" stroke="#7c3aed" stroke-width="1.5"/><circle cx="10" cy="14" r="1.5" fill="#7c3aed"/></svg></div>
                     <div class="flow-node-label">PII<br>Masker</div>
                 </div>
                 <div class="flow-arrow"><svg width="32" height="12"><path d="M0 6 L26 6 M20 1 L26 6 L20 11" stroke="#7c3aed" stroke-width="1.5" fill="none"/></svg></div>
                 <div class="flow-node">
-                    <div class="flow-node-circle" title="Kafka routes ticket to correct queue">📨</div>
+                    <div class="flow-node-circle" title="Kafka routes ticket to correct queue"><svg width="22" height="18" viewBox="0 0 22 18" fill="none"><rect x="2" y="2" width="18" height="14" rx="2" stroke="#7c3aed" stroke-width="1.5"/><polyline points="2,4 11,11 20,4" stroke="#7c3aed" stroke-width="1.3" fill="none"/></svg></div>
                     <div class="flow-node-label">Kafka<br>Router</div>
                 </div>
                 <div class="flow-arrow"><svg width="32" height="12"><path d="M0 6 L26 6 M20 1 L26 6 L20 11" stroke="#7c3aed" stroke-width="1.5" fill="none"/></svg></div>
                 <div class="flow-node">
-                    <div class="flow-node-circle" title="LLM Agent selects action from action space">🤖</div>
+                    <div class="flow-node-circle" title="LLM Agent selects action from action space"><svg width="20" height="22" viewBox="0 0 20 22" fill="none"><rect x="3" y="7" width="14" height="12" rx="3" stroke="#7c3aed" stroke-width="1.5"/><circle cx="7" cy="13" r="1.5" fill="#7c3aed"/><circle cx="13" cy="13" r="1.5" fill="#7c3aed"/><line x1="10" y1="2" x2="10" y2="7" stroke="#7c3aed" stroke-width="1.5"/><circle cx="10" cy="2" r="1" fill="#7c3aed"/></svg></div>
                     <div class="flow-node-label">LLM<br>Agent</div>
                 </div>
                 <div class="flow-arrow"><svg width="32" height="12"><path d="M0 6 L26 6 M20 1 L26 6 L20 11" stroke="#7c3aed" stroke-width="1.5" fill="none"/></svg></div>
                 <div class="flow-node">
-                    <div class="flow-node-circle" title="Dual-signal grader scores the response">⚖️</div>
+                    <div class="flow-node-circle" title="Dual-signal grader scores the response"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><line x1="11" y1="3" x2="11" y2="19" stroke="#7c3aed" stroke-width="1.5"/><line x1="5" y1="6" x2="17" y2="6" stroke="#7c3aed" stroke-width="1.5"/><circle cx="5" cy="12" r="3" stroke="#7c3aed" stroke-width="1.2"/><circle cx="17" cy="12" r="3" stroke="#7c3aed" stroke-width="1.2"/></svg></div>
                     <div class="flow-node-label">Dual<br>Grader</div>
                 </div>
                 <div class="flow-arrow"><svg width="32" height="12"><path d="M0 6 L26 6 M20 1 L26 6 L20 11" stroke="#7c3aed" stroke-width="1.5" fill="none"/></svg></div>
                 <div class="flow-node">
-                    <div class="flow-node-circle" title="Reward signal for RL training">🏆</div>
+                    <div class="flow-node-circle" title="Reward signal for RL training"><svg width="20" height="22" viewBox="0 0 20 22" fill="none"><path d="M5 3h10l-2 8H7L5 3z" stroke="#7c3aed" stroke-width="1.5" stroke-linejoin="round"/><line x1="10" y1="11" x2="10" y2="17" stroke="#7c3aed" stroke-width="1.5"/><line x1="6" y1="17" x2="14" y2="17" stroke="#7c3aed" stroke-width="1.5"/></svg></div>
                     <div class="flow-node-label">Reward<br>Signal</div>
                 </div>
                 <div class="flow-arrow"><svg width="32" height="12"><path d="M0 6 L26 6 M20 1 L26 6 L20 11" stroke="#0dd6b8" stroke-width="1.5" fill="none"/></svg></div>
                 <div class="flow-node">
-                    <div class="flow-node-circle" title="DPO/RLHF trains the model on preference pairs" style="border-color:rgba(13,214,184,0.4);background:rgba(13,214,184,0.08);">📈</div>
+                    <div class="flow-node-circle" title="DPO/RLHF trains the model on preference pairs" style="border-color:rgba(13,214,184,0.4);background:rgba(13,214,184,0.08);"><svg width="22" height="18" viewBox="0 0 22 18" fill="none"><polyline points="2,15 7,10 11,12 16,5 20,3" stroke="#0dd6b8" stroke-width="1.8" stroke-linejoin="round" fill="none"/><polyline points="17,3 20,3 20,6" stroke="#0dd6b8" stroke-width="1.5" fill="none"/></svg></div>
                     <div class="flow-node-label">DPO<br>Training</div>
                 </div>
             </div>
@@ -5149,7 +5149,7 @@
 
             <div class="step-card" data-delay="0">
                 <div class="step-num">Step 01</div>
-                <span class="step-icon">🌐</span>
+                <span class="step-icon"><svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="12" stroke="#7c3aed" stroke-width="1.5"/><ellipse cx="16" cy="16" rx="5" ry="12" stroke="#7c3aed" stroke-width="1.2"/><line x1="4" y1="16" x2="28" y2="16" stroke="#7c3aed" stroke-width="1.2"/><line x1="6" y1="10" x2="26" y2="10" stroke="#7c3aed" stroke-width="1" opacity="0.5"/><line x1="6" y1="22" x2="26" y2="22" stroke="#7c3aed" stroke-width="1" opacity="0.5"/></svg></span>
                 <div class="step-title">Connect Your Backend</div>
                 <div class="step-desc">Open the <strong>Agent Sandbox</strong> tab. The default backend is a hosted HuggingFace Space. To use your own, paste your URL in the <em>API Endpoint Override</em> field and click ⚡ to verify.</div>
                 <div class="step-code">GET  https://your-space.hf.space/
@@ -5159,7 +5159,7 @@
 
             <div class="step-card" data-delay="80">
                 <div class="step-num">Step 02</div>
-                <span class="step-icon">🎫</span>
+                <span class="step-icon"><svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="4" y="8" width="24" height="16" rx="3" stroke="#7c3aed" stroke-width="1.5"/><line x1="10" y1="14" x2="22" y2="14" stroke="#7c3aed" stroke-width="1.3"/><line x1="10" y1="18" x2="17" y2="18" stroke="#7c3aed" stroke-width="1.3"/><circle cx="26" cy="12" r="3" fill="#0dd6b8" opacity="0.7"/></svg></span>
                 <div class="step-title">Select a Task &amp; Ticket</div>
                 <div class="step-desc">Choose a <strong>difficulty level</strong> (Easy → Route, Medium → Triage, Hard → Resolve) and pick a pre-loaded support ticket from the dropdown. Each ticket is a real-world style customer scenario.</div>
                 <div class="step-code">POST /reset
@@ -5170,7 +5170,7 @@
 
             <div class="step-card" data-delay="160">
                 <div class="step-num">Step 03</div>
-                <span class="step-icon">🤖</span>
+                <span class="step-icon"><svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="6" y="12" width="20" height="15" rx="4" stroke="#7c3aed" stroke-width="1.5"/><circle cx="12" cy="19" r="2.5" fill="#7c3aed" opacity="0.8"/><circle cx="20" cy="19" r="2.5" fill="#7c3aed" opacity="0.8"/><line x1="16" y1="3" x2="16" y2="12" stroke="#7c3aed" stroke-width="1.5"/><circle cx="16" cy="3" r="2" fill="#7c3aed"/><line x1="6" y1="22" x2="2" y2="22" stroke="#7c3aed" stroke-width="1.5"/><line x1="26" y1="22" x2="30" y2="22" stroke="#7c3aed" stroke-width="1.5"/></svg></span>
                 <div class="step-title">Watch the Agent Act</div>
                 <div class="step-desc">Click <strong>Initialize Episode</strong> then <strong>Execute Step</strong>. The LLM agent reads the ticket state and emits one action per step: <code>route</code>, <code>respond</code>, <code>escalate</code>, or <code>close</code>.</div>
                 <div class="step-code">POST /step
@@ -5182,7 +5182,7 @@
 
             <div class="step-card" data-delay="240">
                 <div class="step-num">Step 04</div>
-                <span class="step-icon">⚖️</span>
+                <span class="step-icon"><svg width="32" height="32" viewBox="0 0 32 32" fill="none"><line x1="16" y1="4" x2="16" y2="28" stroke="#7c3aed" stroke-width="1.5"/><line x1="8" y1="8" x2="24" y2="8" stroke="#7c3aed" stroke-width="1.5"/><circle cx="8" cy="18" r="4" stroke="#7c3aed" stroke-width="1.3"/><circle cx="24" cy="18" r="4" stroke="#7c3aed" stroke-width="1.3"/><line x1="12" y1="28" x2="20" y2="28" stroke="#7c3aed" stroke-width="1.5"/></svg></span>
                 <div class="step-title">Read the Reward Signal</div>
                 <div class="step-desc">Each step returns a reward in <strong>[0, 1]</strong> from the Dual-Signal Grader — 50% keyword recall score + 50% LLM semantic judge. Watch it update in the Live State Inspector panel in real time.</div>
                 <div class="step-code">R = 0.5 × KW_overlap
@@ -5193,18 +5193,18 @@
 
             <div class="step-card" data-delay="320">
                 <div class="step-num">Step 05</div>
-                <span class="step-icon">🆚</span>
+                <span class="step-icon"><svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="2" y="8" width="12" height="16" rx="2" stroke="#7c3aed" stroke-width="1.4"/><rect x="18" y="8" width="12" height="16" rx="2" stroke="#f97316" stroke-width="1.4"/><line x1="15" y1="16" x2="17" y2="16" stroke="#6b7a9e" stroke-width="1.5" stroke-linecap="round"/><line x1="16" y1="14" x2="16" y2="18" stroke="#6b7a9e" stroke-width="1" stroke-linecap="round"/></svg></span>
                 <div class="step-title">Compare Aligned vs Hacked</div>
                 <div class="step-desc">Click <strong>"Compare Aligned vs. Hacked Runs"</strong> to see side-by-side trajectories. Claude 3.5 (aligned) writes coherent responses. Mistral-7B exploits the keyword scorer with stuffed lists — <em>reward hacking</em> in action.</div>
-                <div class="step-code">Aligned:  R = 0.91  ✔ coherent
-Hacked:   R = 0.83  ✖ stuffed list
+                <div class="step-code">Aligned:  R = 0.91  [+] coherent
+Hacked:   R = 0.83  [-] stuffed list
            "refund invoice billing…"</div>
                 <span class="step-tag tag-eval">EVAL</span>
             </div>
 
             <div class="step-card" data-delay="400">
                 <div class="step-num">Step 06</div>
-                <span class="step-icon">🧠</span>
+                <span class="step-icon"><svg width="32" height="32" viewBox="0 0 32 32" fill="none"><ellipse cx="16" cy="16" rx="11" ry="9" stroke="#7c3aed" stroke-width="1.5"/><path d="M9 12 Q8 8 12 8 Q14 5 18 7 Q22 5 23 9 Q27 10 25 14" stroke="#7c3aed" stroke-width="1.2" fill="none"/><line x1="16" y1="7" x2="16" y2="25" stroke="#7c3aed" stroke-width="1" opacity="0.4"/><line x1="8" y1="16" x2="24" y2="16" stroke="#7c3aed" stroke-width="1" opacity="0.4"/></svg></span>
                 <div class="step-title">Export DPO Pairs for Training</div>
                 <div class="step-desc">In the Sandbox sidebar, click <strong>⚡ Generate DPO Pair View</strong>. This creates a preference pair (chosen/rejected) from your trajectory — ready to feed into a DPO fine-tuning run via the export JSON.</div>
                 <div class="step-code">{"prompt": "…ticket context…",
